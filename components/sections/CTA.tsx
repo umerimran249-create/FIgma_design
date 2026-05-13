@@ -16,10 +16,10 @@ export default function CTA() {
         <p className="mx-auto mt-4 max-w-md text-base leading-7 text-slate-400">
           Let&apos;s build the future of your business together — with data, cloud, and design working in perfect harmony.
         </p>
-        <Button href="#" size="lg" className="mt-8 w-full max-w-[320px]">
+        <Button href="/contact" size="lg" className="mt-8 w-full max-w-[320px]">
           Book a Free Consultation →
         </Button>
-        <a href="#services" className="mt-5 block text-sm text-[#4B5563] hover:text-slate-400">
+        <a href="/services" className="mt-5 block text-sm text-[#4B5563] hover:text-slate-400">
           or explore services first
         </a>
       </div>

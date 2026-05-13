@@ -71,7 +71,7 @@ export default function Services() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <a className="inline-flex rounded-[100px] border border-white/20 px-8 py-3.5 text-[15px] font-semibold text-slate-400 transition-colors hover:border-white hover:text-white" href="#">
+          <a className="inline-flex rounded-[100px] border border-white/20 px-8 py-3.5 text-[15px] font-semibold text-slate-400 transition-colors hover:border-white hover:text-white" href="/services">
             See all services →
           </a>
         </div>

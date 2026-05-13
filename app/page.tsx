@@ -7,6 +7,7 @@ import WhyUs from "@/components/sections/WhyUs";
 import Process from "@/components/sections/Process";
 import Testimonials from "@/components/sections/Testimonials";
 import VistaFlair from "@/components/sections/VistaFlair";
+import LocationsMap from "@/components/sections/LocationsMap";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 
@@ -22,6 +23,7 @@ export default function Home() {
         <Process />
         <Testimonials />
         <VistaFlair />
+        <LocationsMap />
         <FAQ />
         <CTA />
       </main>

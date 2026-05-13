@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 import SplineHeroVisual from "@/components/ui/SplineHeroVisual";
 import SectionLabel from "@/components/ui/SectionLabel";
 import GradientText from "@/components/ui/GradientText";
@@ -25,12 +26,12 @@ export default function Hero() {
             Utilise analytics and technology to redefine industry standards with tailored solutions and unparalleled expertise.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.15 }} className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <a href="#services" className="flex h-14 items-center justify-center rounded-[100px] bg-[linear-gradient(135deg,#2563EB,#06B6D4)] px-8 text-base font-semibold text-white shadow-[0_8px_24px_rgba(6,182,212,0.4)] transition-all hover:-translate-y-0.5">
+            <Link href="/services" className="flex h-14 items-center justify-center rounded-[100px] bg-[linear-gradient(135deg,#2563EB,#06B6D4)] px-8 text-base font-semibold text-white shadow-[0_8px_24px_rgba(6,182,212,0.4)] transition-all hover:-translate-y-0.5">
               Explore Our Services →
-            </a>
-            <a href="#vistaflair" className="flex h-14 items-center justify-center rounded-[100px] border border-white/20 bg-white/5 px-8 text-base font-semibold text-slate-400 transition-colors hover:border-white/40 hover:text-white">
+            </Link>
+            <Link href="/vista-flair" className="flex h-14 items-center justify-center rounded-[100px] border border-white/20 bg-white/5 px-8 text-base font-semibold text-slate-400 transition-colors hover:border-white/40 hover:text-white">
               See Our Insights
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
         <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2 }} className="mx-auto">
