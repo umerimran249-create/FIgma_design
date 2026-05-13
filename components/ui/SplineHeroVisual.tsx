@@ -24,14 +24,7 @@ export default function SplineHeroVisual({ scene }: SplineHeroVisualProps) {
         strategy="afterInteractive"
       />
       <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(7,7,15,0.65)_100%)]" />
-      {/*
-        Use the web component directly to avoid package export
-        incompatibilities in this Next.js environment.
-      */}
-      {(() => {
-        const SplineViewer = "spline-viewer" as keyof JSX.IntrinsicElements;
-        return <SplineViewer url={scene} className="h-full w-full" />;
-      })()}
+      <spline-viewer url={scene} className="h-full w-full" />
     </div>
   );
 }
