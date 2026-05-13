@@ -21,11 +21,16 @@ export default function Button({
   const sizing = size === "lg" ? "h-[60px] px-8 text-[17px]" : "h-14 px-8 text-base";
   const style =
     variant === "primary"
-      ? "text-white shadow-[0_12px_40px_rgba(6,182,212,0.4)] bg-[linear-gradient(135deg,#2563EB,#06B6D4)] hover:-translate-y-0.5"
-      : "border border-white/20 text-slate-300 hover:border-white hover:text-white";
+      ? "text-[#1f2942] shadow-[0_12px_40px_rgba(255,222,90,0.4)] hover:-translate-y-0.5"
+      : "border border-white/25 text-white/85 hover:border-white hover:text-white";
+
+  const inlineStyle =
+    variant === "primary"
+      ? { background: "linear-gradient(135deg,#ffde5a,#ffb648)" }
+      : undefined;
 
   return (
-    <Link href={href} className={`${base} ${sizing} ${style} ${className}`}>
+    <Link href={href} className={`${base} ${sizing} ${style} ${className}`} style={inlineStyle}>
       {children}
     </Link>
   );

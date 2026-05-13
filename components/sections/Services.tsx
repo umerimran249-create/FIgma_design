@@ -16,8 +16,8 @@ const services = [
       "Machine learning & advanced analytics",
       "Data engineering & visualisation",
     ],
-    accent: "#2563EB",
-    gradient: "linear-gradient(90deg, #2563EB, #06B6D4)",
+    accent: "#ffde5a",
+    gradient: "linear-gradient(90deg, #ffde5a, #ffb648)",
     Icon: BarChart2,
   },
   {
@@ -31,8 +31,8 @@ const services = [
       "Automation and tooling",
       "Cost optimisation & workload management",
     ],
-    accent: "#7C3AED",
-    gradient: "linear-gradient(90deg, #7C3AED, #2563EB)",
+    accent: "#ffe888",
+    gradient: "linear-gradient(90deg, #ffe888, #ffde5a)",
     Icon: Cloud,
   },
   {
@@ -46,23 +46,23 @@ const services = [
       "User experience & interface design",
       "Prototyping and integration",
     ],
-    accent: "#06B6D4",
-    gradient: "linear-gradient(90deg, #06B6D4, #10B981)",
+    accent: "#ffb648",
+    gradient: "linear-gradient(90deg, #ffb648, #f5a020)",
     Icon: Layers,
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="bg-[#07070F]">
+    <section id="services" className="bg-[#2e3b5b]">
       <div className="container-vl">
         <SectionLabel text="OUR SERVICES" />
-        <h2 className="mt-4 font-['Syne'] text-4xl font-bold text-white max-lg:text-[28px]">
+        <h2 className="mt-4 font-['Syne'] text-[26px] font-bold leading-tight text-white sm:text-3xl lg:text-4xl">
           Elevated Solutions
           <br />
           for Maximum Impact
         </h2>
-        <p className="mt-4 max-w-lg text-[15px] text-slate-400">
+        <p className="mt-4 max-w-lg text-[15px] text-white/70">
           Immersive experiences for both your team and your customers.
         </p>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -71,7 +71,7 @@ export default function Services() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <a className="inline-flex rounded-[100px] border border-white/20 px-8 py-3.5 text-[15px] font-semibold text-slate-400 transition-colors hover:border-white hover:text-white" href="/services">
+          <a className="inline-flex rounded-[100px] border border-white/25 px-8 py-3.5 text-[15px] font-semibold text-white/80 transition-colors hover:border-[#ffde5a] hover:text-[#ffde5a]" href="/services">
             See all services →
           </a>
         </div>

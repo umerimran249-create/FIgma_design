@@ -29,16 +29,16 @@ export default function Stats() {
   }, [inView]);
 
   return (
-    <section ref={ref} className="border-y border-white/10 bg-[#0D0D1A] py-10 lg:py-14">
-      <div className="container-vl grid grid-cols-2 gap-8 lg:grid-cols-4">
+    <section ref={ref} className="border-y border-white/10 bg-[#1f2942] py-8 sm:py-10 lg:py-14">
+      <div className="container-vl grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4">
         {stats.map((stat, i) => (
           <div key={stat.label} className="lg:border-r lg:border-white/10 lg:last:border-r-0 lg:pr-8">
-            <p className="font-['Syne'] text-4xl font-bold text-white [text-shadow:0_0_20px_rgba(6,182,212,0.3)]">
+            <p className="font-['Syne'] text-3xl font-bold text-[#ffde5a] [text-shadow:0_0_20px_rgba(255,222,90,0.35)] sm:text-4xl">
               {counts[i]}
               {stat.suffix}
             </p>
-            <p className="mt-1 text-[13px] text-slate-400">{stat.label}</p>
-            <p className="text-[11px] text-[#4B5563]">{stat.sublabel}</p>
+            <p className="mt-1 text-[13px] text-white/80">{stat.label}</p>
+            <p className="text-[11px] text-white/45">{stat.sublabel}</p>
           </div>
         ))}
       </div>

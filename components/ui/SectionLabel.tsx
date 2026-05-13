@@ -5,15 +5,15 @@ type SectionLabelProps = {
 
 export default function SectionLabel({
   text,
-  color = "var(--color-cyan)",
+  color = "#ffde5a",
 }: SectionLabelProps) {
   return (
     <span
-      className="inline-flex rounded-pill border px-4 py-1.5 text-[11px] tracking-[0.1em]"
+      className="inline-flex rounded-pill border px-4 py-1.5 text-[11px] font-semibold tracking-[0.12em]"
       style={{
         color,
-        borderColor: "rgba(6,182,212,0.25)",
-        background: "rgba(37,99,235,0.08)",
+        borderColor: "rgba(255, 222, 90, 0.35)",
+        background: "rgba(255, 222, 90, 0.08)",
       }}
     >
       {text}

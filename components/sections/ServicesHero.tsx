@@ -7,10 +7,10 @@ import SplineBackground from "@/components/ui/SplineBackground";
 
 export default function ServicesHero() {
   return (
-    <section className="relative overflow-hidden pt-32 lg:pt-36">
+    <section className="relative overflow-hidden pt-24 sm:pt-32 lg:pt-36">
       <SplineBackground variant="orbits" />
-      <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[rgba(37,99,235,0.12)] blur-3xl" />
-      <div className="pointer-events-none absolute right-[-120px] top-40 h-[380px] w-[380px] rounded-full bg-[rgba(124,58,237,0.1)] blur-3xl" />
+      <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[rgba(255,222,90,0.14)] blur-3xl" />
+      <div className="pointer-events-none absolute right-[-120px] top-40 h-[380px] w-[380px] rounded-full bg-[rgba(255,182,72,0.10)] blur-3xl" />
       <div className="container-vl relative z-10 grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
         <div>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
@@ -20,7 +20,7 @@ export default function ServicesHero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="mt-5 font-['Syne'] text-5xl font-bold leading-[1.02] sm:text-6xl lg:text-7xl"
+            className="mt-5 font-['Syne'] text-[40px] font-bold leading-[1.02] sm:text-6xl lg:text-7xl"
           >
             Explore our
             <br />
@@ -30,7 +30,7 @@ export default function ServicesHero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25 }}
-            className="mt-6 max-w-lg text-base leading-7 text-slate-400"
+            className="mt-6 max-w-lg text-base leading-7 text-white/75"
           >
             Discover our digital ecosystem of bespoke services. From expert
             consulting to flawless execution, we are here to help you take the
@@ -40,15 +40,15 @@ export default function ServicesHero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="mt-8 flex gap-3"
+            className="mt-8 flex flex-wrap gap-3"
           >
-            <a href="#data-analytics-insights" className="rounded-full border border-cyan-400/40 bg-cyan-400/10 px-4 py-2 text-xs text-cyan-300">
+            <a href="#data-analytics-insights" className="rounded-full border border-[#ffde5a]/50 bg-[#ffde5a]/10 px-4 py-2 text-xs text-[#ffde5a]">
               Data &amp; AI
             </a>
-            <a href="#cloud-enablement" className="rounded-full border border-violet-400/40 bg-violet-400/10 px-4 py-2 text-xs text-violet-300">
+            <a href="#cloud-enablement" className="rounded-full border border-[#ffe888]/50 bg-[#ffe888]/10 px-4 py-2 text-xs text-[#ffe888]">
               Cloud
             </a>
-            <a href="#digital-experience-design" className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-2 text-xs text-emerald-300">
+            <a href="#digital-experience-design" className="rounded-full border border-[#ffb648]/50 bg-[#ffb648]/10 px-4 py-2 text-xs text-[#ffb648]">
               Digital
             </a>
           </motion.div>
@@ -58,9 +58,9 @@ export default function ServicesHero() {
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="relative mx-auto h-[360px] w-[360px] sm:h-[420px] sm:w-[420px]"
+          className="relative mx-auto h-[280px] w-[280px] max-w-full sm:h-[360px] sm:w-[360px] lg:h-[420px] lg:w-[420px]"
         >
-          <div className="absolute inset-0 rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_30%_20%,rgba(37,99,235,0.25),transparent_55%),radial-gradient(circle_at_70%_80%,rgba(6,182,212,0.2),transparent_55%),#0B0B16]" />
+          <div className="absolute inset-0 rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_30%_20%,rgba(255,222,90,0.25),transparent_55%),radial-gradient(circle_at_70%_80%,rgba(255,182,72,0.2),transparent_55%),#243152]" />
           <div className="absolute inset-0 flex items-center justify-center">
             <FloatingNodes />
           </div>
@@ -72,13 +72,13 @@ export default function ServicesHero() {
 
 function FloatingNodes() {
   const nodes = [
-    { x: 50, y: 50, size: 80, label: "VL", main: true },
-    { x: 18, y: 28, size: 44, label: "AI", color: "#2563EB" },
-    { x: 82, y: 30, size: 48, label: "API", color: "#7C3AED" },
-    { x: 12, y: 72, size: 42, label: "DBT", color: "#06B6D4" },
-    { x: 86, y: 70, size: 46, label: "K8s", color: "#10B981" },
-    { x: 50, y: 12, size: 38, label: "ML", color: "#06B6D4" },
-    { x: 50, y: 88, size: 38, label: "UX", color: "#7C3AED" },
+    { x: 50, y: 50, size: 80, label: "VL", main: true, color: "#ffde5a" },
+    { x: 18, y: 28, size: 44, label: "AI", color: "#ffde5a" },
+    { x: 82, y: 30, size: 48, label: "API", color: "#ffe888" },
+    { x: 12, y: 72, size: 42, label: "DBT", color: "#ffb648" },
+    { x: 86, y: 70, size: 46, label: "K8s", color: "#ffd270" },
+    { x: 50, y: 12, size: 38, label: "ML", color: "#ffe2a0" },
+    { x: 50, y: 88, size: 38, label: "UX", color: "#f5a020" },
   ];
   return (
     <div className="relative h-full w-full">
@@ -98,8 +98,8 @@ function FloatingNodes() {
         ))}
         <defs>
           <linearGradient id="linkGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#06B6D4" />
-            <stop offset="100%" stopColor="#7C3AED" />
+            <stop offset="0%" stopColor="#ffde5a" />
+            <stop offset="100%" stopColor="#ffb648" />
           </linearGradient>
         </defs>
       </svg>
@@ -115,16 +115,16 @@ function FloatingNodes() {
         >
           <div
             className={`flex items-center justify-center rounded-full font-['Syne'] font-bold ${
-              n.main ? "text-white text-xl" : "text-white text-xs"
+              n.main ? "text-[#1f2942] text-xl" : "text-white text-xs"
             }`}
             style={{
               width: n.size,
               height: n.size,
               background: n.main
-                ? "linear-gradient(135deg,#2563EB,#06B6D4)"
+                ? "linear-gradient(135deg,#ffde5a,#ffb648)"
                 : `radial-gradient(circle, ${n.color}66, ${n.color}22)`,
-              border: n.main ? "1px solid rgba(255,255,255,0.2)" : `1px solid ${n.color}55`,
-              boxShadow: n.main ? "0 0 50px rgba(6,182,212,0.45)" : `0 0 24px ${n.color}33`,
+              border: n.main ? "1px solid rgba(255,255,255,0.25)" : `1px solid ${n.color}66`,
+              boxShadow: n.main ? "0 0 50px rgba(255,222,90,0.55)" : `0 0 24px ${n.color}40`,
             }}
           >
             {n.label}

@@ -30,22 +30,22 @@ const faqs = [
 export default function FAQ() {
   const [open, setOpen] = useState(0);
   return (
-    <section className="bg-[#0D0D1A]">
+    <section className="bg-[#1f2942]">
       <div className="container-vl">
         <SectionLabel text="FAQ" />
-        <h2 className="mt-4 font-['Syne'] text-4xl font-bold text-white max-lg:text-[28px]">Common questions.</h2>
+        <h2 className="mt-4 font-['Syne'] text-[26px] font-bold leading-tight text-white sm:text-3xl lg:text-4xl">Common questions.</h2>
         <div className="mt-8">
           {faqs.map((item, idx) => {
             const isOpen = idx === open;
             return (
               <div key={item.q} className="border-b border-white/10 py-5">
-                <button onClick={() => setOpen(isOpen ? -1 : idx)} className="flex w-full items-start justify-between text-left">
-                  <span className="max-w-[calc(100%-32px)] font-['Syne'] text-base font-semibold text-white">{item.q}</span>
-                  <span className={`text-2xl transition-all ${isOpen ? "rotate-45 text-cyan-400" : "text-slate-400"}`}>+</span>
+                <button onClick={() => setOpen(isOpen ? -1 : idx)} className="flex w-full items-start justify-between gap-4 text-left">
+                  <span className="font-['Syne'] text-[15px] font-semibold leading-snug text-white sm:text-base">{item.q}</span>
+                  <span className={`shrink-0 text-2xl leading-none transition-all ${isOpen ? "rotate-45 text-[#ffde5a]" : "text-white/60"}`}>+</span>
                 </button>
                 <AnimatePresence initial={false}>
                   {isOpen && (
-                    <motion.p initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden pt-3 text-sm leading-7 text-slate-400">
+                    <motion.p initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden pt-3 text-sm leading-7 text-white/75">
                       {item.a}
                     </motion.p>
                   )}

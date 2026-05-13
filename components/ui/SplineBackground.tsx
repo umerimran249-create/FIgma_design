@@ -32,7 +32,7 @@ export default function SplineBackground({
           events-target="global"
           style={{ width: "100%", height: "100%" }}
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(7,7,15,0.85)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(31,41,66,0.88)_100%)]" />
       </div>
     );
   }
@@ -75,7 +75,7 @@ function CanvasVisual({
       r: Math.random() * 1.6 + 0.4,
     }));
 
-    const palette = ["#06B6D4", "#2563EB", "#7C3AED", "#10B981"];
+    const palette = ["#ffde5a", "#ffb648", "#ffe888", "#ffffff"];
 
     const drawParticles = (w: number, h: number, t: number) => {
       ctx.clearRect(0, 0, w, h);
@@ -94,7 +94,7 @@ function CanvasVisual({
           const d2 = dx * dx + dy * dy;
           if (d2 < 14000) {
             const alpha = 1 - d2 / 14000;
-            ctx.strokeStyle = `rgba(6, 182, 212, ${alpha * 0.18})`;
+            ctx.strokeStyle = `rgba(255, 222, 90, ${alpha * 0.16})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x * w, a.y * h);
@@ -119,7 +119,7 @@ function CanvasVisual({
     const drawGrid = (w: number, h: number, t: number) => {
       ctx.clearRect(0, 0, w, h);
       const grid = 48;
-      ctx.strokeStyle = "rgba(6, 182, 212, 0.07)";
+      ctx.strokeStyle = "rgba(255, 222, 90, 0.06)";
       ctx.lineWidth = 1;
       for (let x = 0; x < w; x += grid) {
         ctx.beginPath();
@@ -138,8 +138,8 @@ function CanvasVisual({
       for (let i = 0; i < 4; i++) {
         const r = 80 + i * 60 + Math.sin(t * 0.001 + i) * 12;
         const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-        grad.addColorStop(0, "rgba(37, 99, 235, 0.18)");
-        grad.addColorStop(1, "rgba(37, 99, 235, 0)");
+        grad.addColorStop(0, "rgba(255, 222, 90, 0.14)");
+        grad.addColorStop(1, "rgba(255, 222, 90, 0)");
         ctx.fillStyle = grad;
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
@@ -152,8 +152,8 @@ function CanvasVisual({
       const cx = w / 2;
       const cy = h / 2;
       for (let i = 0; i < 5; i++) {
-        ctx.strokeStyle = `rgba(${i % 2 ? "124,58,237" : "6,182,212"}, ${
-          0.05 + i * 0.03
+        ctx.strokeStyle = `rgba(${i % 2 ? "255,182,72" : "255,222,90"}, ${
+          0.06 + i * 0.04
         })`;
         ctx.lineWidth = 1;
         ctx.beginPath();

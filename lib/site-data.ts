@@ -53,8 +53,8 @@ export const servicesData = [
     title: "Data, Analytics & Insights",
     short: "Boosting organisational performance with actionable insights.",
     long: "Unlock the power of data with advanced analytics solutions. From big data and predictive analytics to actionable insights, we help you make data-driven decisions that keep you ahead in today's competitive landscape.",
-    accent: "#2563EB",
-    gradient: "linear-gradient(135deg, #2563EB, #06B6D4)",
+    accent: "#ffde5a",
+    gradient: "linear-gradient(135deg, #ffde5a, #ffb648)",
     pillars: [
       {
         name: "Strategy & Advisory",
@@ -87,8 +87,8 @@ export const servicesData = [
     title: "Cloud Enablement",
     short: "Drive innovation and optimisation through technology modernisation.",
     long: "Transform your operations with comprehensive cloud enablement services. From strategy through migration to optimisation, we leverage deep, experience-based learnings to help you seamlessly transition to cloud-based technologies — maximising agility and minimising cost.",
-    accent: "#7C3AED",
-    gradient: "linear-gradient(135deg, #7C3AED, #2563EB)",
+    accent: "#ffe888",
+    gradient: "linear-gradient(135deg, #ffe888, #ffde5a)",
     pillars: [
       {
         name: "Cloud Strategy",
@@ -121,8 +121,8 @@ export const servicesData = [
     title: "Digital Experience & Design",
     short: "Captivate and convert by streamlining cohesive experiences.",
     long: "Elevate your digital presence and connect with customers like never before. Our digital experience solutions blend creativity with innovative technology to deliver smooth, personalised experiences across web, mobile, and emerging platforms.",
-    accent: "#06B6D4",
-    gradient: "linear-gradient(135deg, #06B6D4, #10B981)",
+    accent: "#ffb648",
+    gradient: "linear-gradient(135deg, #ffb648, #f5a020)",
     pillars: [
       {
         name: "Strategy & Advisory",
@@ -161,7 +161,7 @@ export const flairs = [
       "AI success now hinges on governance, not just great models: leaders need a risk-based operating system that assigns ownership, embeds controls, and produces audit-ready evidence by default.",
     author: "Laura Bennett",
     date: "14/10/2025",
-    accent: "#2563EB",
+    accent: "#ffde5a",
   },
   {
     slug: "telecoms-product-market-fit",
@@ -171,7 +171,7 @@ export const flairs = [
       "Lessons from the field — a case study on the use of AI for efficient product design leading to enhanced uptake and adoption in the Telecommunications sector.",
     author: "James Calder",
     date: "26/10/2024",
-    accent: "#7C3AED",
+    accent: "#ffe888",
   },
   {
     slug: "ai-driven-data-monetization",
@@ -182,7 +182,7 @@ export const flairs = [
       "Learn how businesses are turning data into revenue with AI-powered insights, automation, and scalable personalisation.",
     author: "Madi Almadi",
     date: "01/07/2025",
-    accent: "#06B6D4",
+    accent: "#ffb648",
   },
   {
     slug: "cloud-economics-assessment",
@@ -193,7 +193,7 @@ export const flairs = [
       "Understanding cloud costs and benefits to inform the strategic migration of your data and analytics ecosystem to cloud.",
     author: "Hammad Khan",
     date: "15/07/2024",
-    accent: "#10B981",
+    accent: "#f5a020",
   },
   {
     slug: "cloud-data-analytics-modernization",
@@ -204,7 +204,7 @@ export const flairs = [
       "A structured approach to uplifting your data and analytics ecosystem through cloud modernisation.",
     author: "Brett Willoughby",
     date: "15/07/2024",
-    accent: "#10B981",
+    accent: "#ffe2a0",
   },
   {
     slug: "ai-in-healthcare",
@@ -215,7 +215,7 @@ export const flairs = [
       "Enhancing the efficacy, personalization and cost-effectiveness of healthcare by harnessing the potential of Artificial Intelligence.",
     author: "Fana Anwar",
     date: "26/10/2024",
-    accent: "#2563EB",
+    accent: "#ffd270",
   },
 ];
 

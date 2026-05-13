@@ -20,7 +20,7 @@ export default function ServiceDetail({
   return (
     <section
       id={service.slug}
-      className={`relative overflow-hidden ${flip ? "bg-[#0D0D1A]" : "bg-[#07070F]"}`}
+      className={`relative overflow-hidden ${flip ? "bg-[#1f2942]" : "bg-[#2e3b5b]"}`}
     >
       <div
         className="pointer-events-none absolute -left-32 top-1/2 h-[400px] w-[400px] -translate-y-1/2 rounded-full blur-3xl"
@@ -44,10 +44,10 @@ export default function ServiceDetail({
             >
               0{index + 1} · Service
             </span>
-            <h2 className="font-['Syne'] text-4xl font-bold leading-tight text-white max-lg:text-3xl">
+            <h2 className="font-['Syne'] text-[28px] font-bold leading-tight text-white sm:text-3xl lg:text-4xl">
               {service.title}
             </h2>
-            <p className="mt-4 max-w-lg text-base leading-7 text-slate-400">
+            <p className="mt-4 max-w-lg text-base leading-7 text-white/75">
               {service.long}
             </p>
 
@@ -60,7 +60,7 @@ export default function ServiceDetail({
                   className={`rounded-full border px-4 py-2 text-xs font-medium transition-all ${
                     activePillar === i
                       ? "text-white"
-                      : "border-white/10 text-slate-400 hover:border-white/30 hover:text-white"
+                      : "border-white/15 text-white/65 hover:border-white/40 hover:text-white"
                   }`}
                   style={
                     activePillar === i
@@ -84,7 +84,7 @@ export default function ServiceDetail({
               className="mt-6 space-y-3"
             >
               {service.pillars[activePillar].items.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm leading-6 text-slate-300">
+                <li key={item} className="flex items-start gap-3 text-sm leading-6 text-white/85">
                   <CheckCircle2 size={18} style={{ color: service.accent }} className="mt-0.5 shrink-0" />
                   {item}
                 </li>
@@ -97,7 +97,7 @@ export default function ServiceDetail({
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7 }}
-            className="relative aspect-square w-full max-w-[480px] overflow-hidden rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.06),transparent_55%),#0B0B16] shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
+            className="relative mx-auto aspect-square w-full max-w-[320px] overflow-hidden rounded-[24px] border border-white/10 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.08),transparent_55%),#243152] shadow-[0_20px_60px_rgba(0,0,0,0.35)] sm:max-w-[400px] lg:max-w-[480px] lg:rounded-[28px]"
           >
             <ServiceVisual accent={service.accent} gradient={service.gradient} variant={index} />
           </motion.div>
@@ -150,11 +150,11 @@ function DataVisual({ accent, gradient }: { accent: string; gradient: string }) 
           />
         ))}
       </div>
-      <div className="absolute left-6 top-6 rounded-md border border-white/10 bg-black/30 px-3 py-1 text-[10px] uppercase tracking-wider text-white/80 backdrop-blur">
+      <div className="absolute left-6 top-6 rounded-md border border-white/15 bg-[#1f2942]/60 px-3 py-1 text-[10px] uppercase tracking-wider text-white/90 backdrop-blur">
         Live Dataset · 100k events/s
       </div>
       <div
-        className="absolute right-6 top-6 rounded-md border bg-black/30 px-3 py-1 text-[10px] uppercase tracking-wider backdrop-blur"
+        className="absolute right-6 top-6 rounded-md border bg-[#1f2942]/60 px-3 py-1 text-[10px] uppercase tracking-wider backdrop-blur"
         style={{ color: accent, borderColor: `${accent}55` }}
       >
         AI Score · 0.97
@@ -169,8 +169,8 @@ function CloudVisual({ accent, gradient }: { accent: string; gradient: string })
       <svg viewBox="0 0 200 200" className="absolute inset-0 h-full w-full">
         <defs>
           <linearGradient id="cloudStroke" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#7C3AED" />
-            <stop offset="100%" stopColor="#2563EB" />
+            <stop offset="0%" stopColor="#ffde5a" />
+            <stop offset="100%" stopColor="#ffb648" />
           </linearGradient>
         </defs>
         {Array.from({ length: 6 }).map((_, i) => (
@@ -189,14 +189,14 @@ function CloudVisual({ accent, gradient }: { accent: string; gradient: string })
         ))}
       </svg>
       <div
-        className="absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-3xl text-white shadow-[0_20px_60px_rgba(124,58,237,0.45)]"
+        className="absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-3xl text-[#1f2942] shadow-[0_20px_60px_rgba(255,222,90,0.45)]"
         style={{ background: gradient }}
       >
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
           <path
             d="M17 18a4 4 0 0 0 .6-7.96 6 6 0 0 0-11.7 1.4A4.5 4.5 0 0 0 7 19h10z"
-            stroke="white"
-            strokeWidth="1.6"
+            stroke="#1f2942"
+            strokeWidth="1.8"
             strokeLinejoin="round"
           />
         </svg>
@@ -225,7 +225,7 @@ function CloudVisual({ accent, gradient }: { accent: string; gradient: string })
         </div>
       ))}
       <div
-        className="absolute right-6 top-6 rounded-md border bg-black/30 px-3 py-1 text-[10px] uppercase tracking-wider backdrop-blur"
+        className="absolute right-6 top-6 rounded-md border bg-[#1f2942]/60 px-3 py-1 text-[10px] uppercase tracking-wider backdrop-blur"
         style={{ color: accent, borderColor: `${accent}55` }}
       >
         Multi-region · 99.99%
@@ -237,7 +237,7 @@ function CloudVisual({ accent, gradient }: { accent: string; gradient: string })
 function DesignVisual({ accent, gradient }: { accent: string; gradient: string }) {
   return (
     <div className="relative h-full w-full">
-      <div className="absolute inset-6 rounded-2xl border border-white/10 bg-black/30 p-4 backdrop-blur">
+      <div className="absolute inset-6 rounded-2xl border border-white/15 bg-[#1f2942]/60 p-4 backdrop-blur">
         <div className="flex items-center gap-1.5">
           <span className="h-2 w-2 rounded-full bg-red-400/60" />
           <span className="h-2 w-2 rounded-full bg-yellow-400/60" />
@@ -253,7 +253,7 @@ function DesignVisual({ accent, gradient }: { accent: string; gradient: string }
             <div className="h-2 w-24 rounded-full bg-white/15" />
             <div className="h-2 w-20 rounded-full bg-white/10" />
             <div
-              className="mt-3 inline-flex h-7 items-center rounded-full px-3 text-[10px] font-semibold text-white"
+              className="mt-3 inline-flex h-7 items-center rounded-full px-3 text-[10px] font-semibold text-[#1f2942]"
               style={{ background: gradient }}
             >
               Buy now

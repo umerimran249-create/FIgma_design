@@ -12,31 +12,31 @@ export default function LocationsMap() {
   const current = locations.find((l) => l.id === active) ?? locations[0];
 
   return (
-    <section id="locations" className="relative overflow-hidden bg-[#07070F]">
+    <section id="locations" className="relative overflow-hidden bg-[#2e3b5b]">
       <SplineBackground variant="grid" />
       <div className="container-vl relative z-10">
         <div className="flex flex-col items-start gap-4">
           <SectionLabel text="WHERE WE WORK" />
-          <h2 className="font-['Syne'] text-4xl font-bold text-white max-lg:text-[28px]">
+          <h2 className="font-['Syne'] text-3xl font-bold text-white sm:text-4xl">
             Global presence,
             <br />
             local partnership.
           </h2>
-          <p className="max-w-xl text-[15px] leading-7 text-slate-400">
+          <p className="max-w-xl text-[15px] leading-7 text-white/70">
             Headquartered in Melbourne with engagement studios across the Asia-Pacific.
             Drop us a line — we&apos;ll find the nearest team.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1.5fr_1fr]">
+        <div className="mt-10 grid gap-6 sm:mt-12 sm:gap-8 lg:grid-cols-[1.5fr_1fr]">
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8 }}
-            className="relative overflow-hidden rounded-[24px] border border-white/10 bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.18),transparent_50%),radial-gradient(circle_at_80%_80%,rgba(124,58,237,0.18),transparent_55%),#0B0B16] p-6 shadow-[0_20px_60px_rgba(6,182,212,0.08)]"
+            className="relative overflow-hidden rounded-[20px] border border-white/10 bg-[radial-gradient(circle_at_20%_20%,rgba(255,222,90,0.16),transparent_55%),radial-gradient(circle_at_80%_80%,rgba(255,182,72,0.14),transparent_55%),#1f2942] p-3 shadow-[0_20px_60px_rgba(0,0,0,0.35)] sm:p-6"
           >
-            <div className="relative aspect-[16/9] w-full">
+            <div className="relative aspect-[16/10] w-full sm:aspect-[16/9]">
               <WorldMapSvg />
               {locations.map((loc) => (
                 <MapPinMark
@@ -61,31 +61,29 @@ export default function LocationsMap() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className={`relative w-full overflow-hidden rounded-2xl border p-5 text-left transition-all ${
+                  className={`relative w-full overflow-hidden rounded-2xl border p-4 text-left transition-all sm:p-5 ${
                     isActive
-                      ? "border-cyan-400/60 bg-[#111122] shadow-[0_8px_32px_rgba(6,182,212,0.18)]"
-                      : "border-white/10 bg-[#0d0d1a] hover:border-white/20"
+                      ? "border-[#ffde5a]/70 bg-[#38476c] shadow-[0_8px_32px_rgba(255,222,90,0.15)]"
+                      : "border-white/10 bg-[#1f2942] hover:border-white/25"
                   }`}
                 >
                   <span
                     className={`absolute left-0 top-0 h-full w-[3px] transition-all ${
-                      isActive
-                        ? "bg-[linear-gradient(180deg,#2563EB,#06B6D4)]"
-                        : "bg-transparent"
+                      isActive ? "bg-[linear-gradient(180deg,#ffde5a,#ffb648)]" : "bg-transparent"
                     }`}
                   />
                   <div className="flex items-start gap-3">
-                    <span className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-cyan-400/40 bg-cyan-400/10 text-cyan-400">
+                    <span className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#ffde5a]/50 bg-[#ffde5a]/10 text-[#ffde5a]">
                       <MapPin size={16} />
                     </span>
                     <div>
                       <p className="font-['Syne'] text-base font-bold text-white">
                         {loc.city}, {loc.country}
                       </p>
-                      <p className="text-xs uppercase tracking-wider text-cyan-400">
+                      <p className="text-xs uppercase tracking-wider text-[#ffde5a]">
                         {loc.role}
                       </p>
-                      <p className="mt-2 text-sm leading-6 text-slate-400">
+                      <p className="mt-2 text-sm leading-6 text-white/75">
                         {loc.address}
                       </p>
                     </div>
@@ -96,13 +94,13 @@ export default function LocationsMap() {
 
             <a
               href={`mailto:${siteConfig.email}`}
-              className="mt-2 flex items-center justify-between gap-2 rounded-2xl border border-white/10 bg-[#0d0d1a] p-4 text-sm text-slate-400 transition-all hover:border-white/30 hover:text-white"
+              className="mt-2 flex items-center justify-between gap-2 rounded-2xl border border-white/10 bg-[#1f2942] p-4 text-sm text-white/75 transition-all hover:border-[#ffde5a]/40 hover:text-white"
             >
               <span className="flex items-center gap-3">
-                <Mail size={16} className="text-cyan-400" />
+                <Mail size={16} className="text-[#ffde5a]" />
                 {siteConfig.email}
               </span>
-              <span className="text-cyan-400">→</span>
+              <span className="text-[#ffde5a]">→</span>
             </a>
           </div>
         </div>
@@ -117,7 +115,7 @@ export default function LocationsMap() {
           <iframe
             title={`${current.city} office`}
             src={`https://maps.google.com/maps?q=${current.lat},${current.lng}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-            className="h-[360px] w-full grayscale-[0.4]"
+            className="h-[260px] w-full sm:h-[360px]"
             style={{ filter: "invert(0.9) hue-rotate(180deg) saturate(0.8)" }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -149,7 +147,7 @@ function MapPinMark({
         <span
           className="absolute inline-flex h-full w-full rounded-full opacity-60"
           style={{
-            background: active ? "#06B6D4" : "#2563EB",
+            background: active ? "#ffde5a" : "#ffb648",
             animation: "pulse 1.6s ease-out infinite",
           }}
         />
@@ -157,20 +155,20 @@ function MapPinMark({
           className="absolute inline-flex h-7 w-7 rounded-full"
           style={{
             background: active
-              ? "radial-gradient(circle, rgba(6,182,212,0.45), transparent 70%)"
-              : "radial-gradient(circle, rgba(37,99,235,0.35), transparent 70%)",
+              ? "radial-gradient(circle, rgba(255,222,90,0.5), transparent 70%)"
+              : "radial-gradient(circle, rgba(255,182,72,0.4), transparent 70%)",
           }}
         />
         <span
-          className="relative inline-flex h-2.5 w-2.5 rounded-full ring-2 ring-white/30"
-          style={{ background: active ? "#06B6D4" : "#2563EB" }}
+          className="relative inline-flex h-2.5 w-2.5 rounded-full ring-2 ring-white/40"
+          style={{ background: active ? "#ffde5a" : "#ffb648" }}
         />
       </span>
       <span
-        className={`absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#0d0d1a]/90 px-2 py-1 text-[11px] font-semibold backdrop-blur transition-opacity ${
+        className={`absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#1f2942]/90 px-2 py-1 text-[11px] font-semibold backdrop-blur transition-opacity ${
           active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
         }`}
-        style={{ color: active ? "#06B6D4" : "white" }}
+        style={{ color: active ? "#ffde5a" : "white" }}
       >
         {loc.city}
       </span>
@@ -187,11 +185,11 @@ function WorldMapSvg() {
     >
       <defs>
         <radialGradient id="bgGrad" cx="50%" cy="50%" r="60%">
-          <stop offset="0%" stopColor="#1a1a35" />
-          <stop offset="100%" stopColor="#0a0a18" />
+          <stop offset="0%" stopColor="#37456a" />
+          <stop offset="100%" stopColor="#1f2942" />
         </radialGradient>
         <pattern id="dots" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1.2" fill="rgba(6,182,212,0.45)" />
+          <circle cx="2" cy="2" r="1.2" fill="rgba(255,222,90,0.55)" />
         </pattern>
         <mask id="continentMask">
           <rect width="1000" height="500" fill="black" />

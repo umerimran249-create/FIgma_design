@@ -4,31 +4,40 @@
 @tailwind utilities;
 
 :root {
-  --color-bg-primary: #07070f;
-  --color-bg-secondary: #0d0d1a;
-  --color-bg-card: #111122;
-  --color-bg-card-hover: #161630;
-  --color-blue: #2563eb;
-  --color-cyan: #06b6d4;
-  --color-violet: #7c3aed;
-  --color-teal: #10b981;
+  /* Brand palette (from official Vista Logica logo) */
+  --color-navy: #2e3b5b;
+  --color-navy-deep: #1f2942;
+  --color-navy-mid: #3a4a72;
+  --color-navy-card: #38476c;
+  --color-navy-card-hover: #455583;
+  --color-yellow: #ffde5a;
+  --color-yellow-soft: #ffe888;
+  --color-yellow-deep: #f5c93f;
+
+  --color-bg-primary: var(--color-navy);
+  --color-bg-secondary: var(--color-navy-deep);
+  --color-bg-card: var(--color-navy-card);
+  --color-bg-card-hover: var(--color-navy-card-hover);
+
   --color-white: #ffffff;
-  --color-text-primary: #f0f4ff;
-  --color-text-secondary: #94a3b8;
-  --color-text-tertiary: #4b5563;
-  --color-border: rgba(255, 255, 255, 0.07);
-  --color-border-strong: rgba(255, 255, 255, 0.14);
-  --gradient-primary: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
-  --gradient-violet: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
-  --gradient-teal: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
-  --gradient-text: linear-gradient(90deg, #2563eb, #06b6d4);
-  --glow-blue: 0 0 40px rgba(37, 99, 235, 0.25);
-  --glow-cyan: 0 0 40px rgba(6, 182, 212, 0.25);
-  --glow-violet: 0 0 40px rgba(124, 58, 237, 0.2);
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --shadow-btn: 0 8px 24px rgba(6, 182, 212, 0.35);
-  --space-section: 80px;
-  --space-section-md: 120px;
+  --color-text-primary: #f5f7fb;
+  --color-text-secondary: #c8d0e3;
+  --color-text-tertiary: #8b95b3;
+
+  --color-border: rgba(255, 255, 255, 0.10);
+  --color-border-strong: rgba(255, 255, 255, 0.20);
+
+  --gradient-primary: linear-gradient(135deg, #ffde5a 0%, #ffb648 100%);
+  --gradient-accent: linear-gradient(135deg, #2e3b5b 0%, #455583 100%);
+  --gradient-text: linear-gradient(90deg, #ffde5a, #ffb648);
+
+  --glow-yellow: 0 0 40px rgba(255, 222, 90, 0.35);
+  --glow-yellow-soft: 0 0 24px rgba(255, 222, 90, 0.22);
+  --shadow-card: 0 8px 32px rgba(15, 22, 45, 0.45);
+  --shadow-btn: 0 12px 32px rgba(255, 222, 90, 0.35);
+
+  --space-section: 56px;
+  --space-section-md: 80px;
   --radius-card: 20px;
   --radius-pill: 100px;
   --radius-badge: 8px;
@@ -73,40 +82,22 @@ body {
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 @keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 1;
-  }
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
 }
 @keyframes floatY {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-bg-primary);
-}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-bg-primary); }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-blue);
+  background: var(--color-yellow);
   border-radius: 2px;
 }
 
@@ -115,12 +106,19 @@ body {
   margin-inline: auto;
 }
 
+@media (max-width: 480px) {
+  .container-vl {
+    width: min(1200px, 100% - 1.25rem);
+  }
+}
+
 section {
   padding-block: var(--space-section);
 }
 
+@media (min-width: 768px) {
+  :root { --space-section: 80px; }
+}
 @media (min-width: 1024px) {
-  :root {
-    --space-section: 120px;
-  }
+  :root { --space-section: 120px; }
 }

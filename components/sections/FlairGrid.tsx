@@ -6,13 +6,13 @@ import { flairs } from "@/lib/site-data";
 
 export default function FlairGrid() {
   return (
-    <section className="bg-[#07070F]">
+    <section className="bg-[#2e3b5b]">
       <div className="container-vl">
         <SectionLabel text="FLAIRS YOU MIGHT HAVE MISSED" />
-        <h2 className="mt-4 font-['Syne'] text-4xl font-bold text-white max-lg:text-[28px]">
+        <h2 className="mt-4 font-['Syne'] text-[26px] font-bold leading-tight text-white sm:text-3xl lg:text-4xl">
           Explore the archive.
         </h2>
-        <p className="mt-4 max-w-xl text-sm leading-6 text-slate-400">
+        <p className="mt-4 max-w-xl text-sm leading-6 text-white/75">
           Six in-depth pieces across AI governance, cloud, data strategy and
           beyond.
         </p>
@@ -26,7 +26,7 @@ export default function FlairGrid() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: (i % 3) * 0.08 }}
               whileHover={{ y: -6 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#111122]"
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#38476c]"
             >
               <div
                 className="relative h-44 overflow-hidden"
@@ -58,11 +58,11 @@ export default function FlairGrid() {
                 <h3 className="font-['Syne'] text-base font-semibold leading-6 text-white">
                   {f.title}
                 </h3>
-                <p className="line-clamp-3 text-xs leading-6 text-slate-400">
+                <p className="line-clamp-3 text-xs leading-6 text-white/70">
                   {f.excerpt}
                 </p>
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-slate-400">By {f.author}</span>
+                  <span className="text-white/65">By {f.author}</span>
                   <span
                     className="font-semibold"
                     style={{ color: f.accent }}

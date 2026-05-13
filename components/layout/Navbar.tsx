@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/lib/site-data";
 
@@ -21,14 +22,22 @@ export default function Navbar() {
   return (
     <>
       <header
-        className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#07070Fd9] backdrop-blur-xl"
-        style={{ boxShadow: scrolled ? "0 4px 32px rgba(0,0,0,0.5)" : "none" }}
+        className="fixed top-0 z-50 w-full border-b border-white/10 backdrop-blur-xl"
+        style={{
+          background: "rgba(31, 41, 66, 0.85)",
+          boxShadow: scrolled ? "0 4px 32px rgba(0,0,0,0.4)" : "none",
+        }}
       >
-        <div className="container-vl flex h-[68px] items-center justify-between lg:h-[72px]">
-          <Link href="/" className="flex items-start font-['Syne'] text-xl font-bold">
-            <span className="text-white">Vista</span>
-            <span className="text-cyan-400">Logica</span>
-            <span className="ml-1 mt-1 inline-block h-2 w-2 rounded-full bg-cyan-400" />
+        <div className="container-vl flex h-[64px] items-center justify-between lg:h-[72px]">
+          <Link href="/" className="flex items-center" aria-label="Vista Logica">
+            <Image
+              src="/logo-color.svg"
+              alt="Vista Logica"
+              width={3162}
+              height={645}
+              priority
+              className="h-7 w-auto sm:h-8"
+            />
           </Link>
           <nav className="hidden items-center gap-8 md:flex">
             {navLinks.map((item) => {
@@ -38,14 +47,15 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={`relative text-[15px] transition-colors ${
-                    active ? "text-white" : "text-slate-400 hover:text-white"
+                    active ? "text-[#ffde5a]" : "text-white/70 hover:text-white"
                   }`}
                 >
                   {item.label}
                   {active && (
                     <motion.span
                       layoutId="nav-underline"
-                      className="absolute -bottom-1 left-0 h-[2px] w-full bg-[linear-gradient(90deg,#2563EB,#06B6D4)]"
+                      className="absolute -bottom-1 left-0 h-[2px] w-full"
+                      style={{ background: "linear-gradient(90deg,#ffde5a,#ffb648)" }}
                     />
                   )}
                 </Link>
@@ -54,7 +64,8 @@ export default function Navbar() {
           </nav>
           <Link
             href="/contact"
-            className="hidden h-10 items-center rounded-[100px] bg-[linear-gradient(135deg,#2563EB,#06B6D4)] px-5 text-[13px] font-semibold text-white shadow-[0_4px_16px_rgba(6,182,212,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(6,182,212,0.45)] md:flex"
+            className="hidden h-10 items-center rounded-[100px] px-5 text-[13px] font-semibold text-[#1f2942] shadow-[0_4px_16px_rgba(255,222,90,0.35)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(255,222,90,0.5)] md:flex"
+            style={{ background: "linear-gradient(135deg,#ffde5a,#ffb648)" }}
           >
             Get in Touch
           </Link>
@@ -70,7 +81,8 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-[#07070Ffa] md:hidden"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 md:hidden"
+            style={{ background: "rgba(31, 41, 66, 0.97)" }}
           >
             {navLinks.map((item, i) => (
               <motion.div
@@ -82,12 +94,22 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="font-['Syne'] text-3xl font-bold text-white"
+                  className={`font-['Syne'] text-3xl font-bold ${
+                    pathname === item.href ? "text-[#ffde5a]" : "text-white"
+                  }`}
                 >
                   {item.label}
                 </Link>
               </motion.div>
             ))}
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="mt-2 rounded-full px-7 py-3 text-sm font-semibold text-[#1f2942]"
+              style={{ background: "linear-gradient(135deg,#ffde5a,#ffb648)" }}
+            >
+              Get in Touch
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

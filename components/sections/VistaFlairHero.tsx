@@ -7,10 +7,10 @@ import SplineBackground from "@/components/ui/SplineBackground";
 
 export default function VistaFlairHero() {
   return (
-    <section className="relative overflow-hidden pt-32 lg:pt-36">
+    <section className="relative overflow-hidden pt-24 sm:pt-32 lg:pt-36">
       <SplineBackground variant="particles" />
-      <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[rgba(124,58,237,0.12)] blur-3xl" />
-      <div className="pointer-events-none absolute right-[-120px] top-40 h-[380px] w-[380px] rounded-full bg-[rgba(6,182,212,0.12)] blur-3xl" />
+      <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[rgba(255,222,90,0.14)] blur-3xl" />
+      <div className="pointer-events-none absolute right-[-120px] top-40 h-[380px] w-[380px] rounded-full bg-[rgba(255,182,72,0.10)] blur-3xl" />
 
       <div className="container-vl relative z-10 grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
         <div>
@@ -21,7 +21,7 @@ export default function VistaFlairHero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="mt-5 font-['Syne'] text-5xl font-bold leading-[1.02] sm:text-6xl lg:text-7xl"
+            className="mt-5 font-['Syne'] text-[34px] font-bold leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl"
           >
             Hop aboard the
             <br />
@@ -33,7 +33,7 @@ export default function VistaFlairHero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25 }}
-            className="mt-6 max-w-lg text-base leading-7 text-slate-400"
+            className="mt-6 max-w-lg text-base leading-7 text-white/75"
           >
             Cross-industry insights and visionary strategies in every compartment.
             Don&apos;t let the train of thought leadership pass you by — read
@@ -45,7 +45,7 @@ export default function VistaFlairHero() {
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7 }}
-          className="relative mx-auto h-[360px] w-[320px] sm:h-[420px] sm:w-[380px]"
+          className="relative mx-auto h-[300px] w-[280px] max-w-full sm:h-[360px] sm:w-[320px] lg:h-[420px] lg:w-[380px]"
         >
           <ArticleStack />
         </motion.div>
@@ -56,19 +56,19 @@ export default function VistaFlairHero() {
 
 function ArticleStack() {
   const cards = [
-    { c: "AI", color: "#2563EB", title: "Responsible AI" },
-    { c: "Cloud", color: "#06B6D4", title: "Cloud Economics" },
-    { c: "Data", color: "#7C3AED", title: "Data Monetization" },
+    { c: "AI", color: "#ffde5a", title: "Responsible AI" },
+    { c: "Cloud", color: "#ffb648", title: "Cloud Economics" },
+    { c: "Data", color: "#ffe888", title: "Data Monetization" },
   ];
   return (
     <div className="relative h-full w-full">
       {cards.map((card, i) => (
         <div
           key={card.title}
-          className="absolute left-1/2 top-1/2 h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-3xl border border-white/10 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.4)] backdrop-blur"
+          className="absolute left-1/2 top-1/2 h-[220px] w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-3xl border border-white/10 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.4)] backdrop-blur sm:h-[240px] sm:w-[240px] sm:p-6 lg:h-[260px] lg:w-[260px]"
           style={{
             transform: `translate(-50%, -50%) translateY(${(i - 1) * 18}px) translateX(${(i - 1) * 14}px) rotate(${(i - 1) * 5}deg)`,
-            background: `linear-gradient(160deg, ${card.color}33, #0B0B16 70%)`,
+            background: `linear-gradient(160deg, ${card.color}40, #243152 70%)`,
             zIndex: 10 - i,
             animation: `floatY ${3 + i * 0.4}s ease-in-out ${i * 0.4}s infinite`,
           }}

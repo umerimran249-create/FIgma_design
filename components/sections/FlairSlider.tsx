@@ -29,15 +29,15 @@ export default function FlairSlider() {
   const current = featured[i];
 
   return (
-    <section className="bg-[#0D0D1A]">
+    <section className="bg-[#1f2942]">
       <div className="container-vl">
         <SectionLabel text="FLAIRS IN FOCUS" />
-        <h2 className="mt-4 font-['Syne'] text-4xl font-bold text-white max-lg:text-[28px]">
+        <h2 className="mt-4 font-['Syne'] text-[26px] font-bold leading-tight text-white sm:text-3xl lg:text-4xl">
           Featured insights.
         </h2>
 
         <div className="mt-10 grid items-stretch gap-6 lg:grid-cols-[1.4fr_1fr]">
-          <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-[#111122] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
+          <div className="relative overflow-hidden rounded-[20px] border border-white/10 bg-[#38476c] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.3)] sm:rounded-[24px] sm:p-8">
             <AnimatePresence mode="wait" custom={dir}>
               <motion.div
                 key={current.slug}
@@ -57,14 +57,14 @@ export default function FlairSlider() {
                 >
                   {current.category}
                 </span>
-                <h3 className="mt-5 font-['Syne'] text-3xl font-bold leading-tight text-white max-lg:text-2xl">
+                <h3 className="mt-5 font-['Syne'] text-xl font-bold leading-tight text-white sm:text-2xl lg:text-3xl">
                   {current.title}
                 </h3>
-                <p className="mt-4 max-w-xl text-sm leading-7 text-slate-400">
+                <p className="mt-4 max-w-xl text-sm leading-7 text-white/80">
                   {current.excerpt}
                 </p>
-                <div className="mt-6 flex items-center gap-3 text-xs text-slate-400">
-                  <span className="h-9 w-9 rounded-full" style={{ background: `${current.accent}33` }} />
+                <div className="mt-6 flex items-center gap-3 text-xs text-white/65">
+                  <span className="h-9 w-9 rounded-full" style={{ background: `${current.accent}40` }} />
                   <div>
                     <p className="font-semibold text-white">By {current.author}</p>
                     <p>{current.date}</p>
@@ -94,7 +94,7 @@ export default function FlairSlider() {
                       setI(idx);
                     }}
                     className={`h-1.5 rounded-full transition-all ${
-                      idx === i ? "w-8 bg-cyan-400" : "w-3 bg-white/15 hover:bg-white/30"
+                      idx === i ? "w-8 bg-[#ffde5a]" : "w-3 bg-white/15 hover:bg-white/30"
                     }`}
                     aria-label={`Slide ${idx + 1}`}
                   />
@@ -104,7 +104,7 @@ export default function FlairSlider() {
                 <button
                   type="button"
                   onClick={prev}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-white/40"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-[#ffde5a] hover:text-[#ffde5a]"
                   aria-label="Previous"
                 >
                   <ChevronLeft size={16} />
@@ -112,7 +112,7 @@ export default function FlairSlider() {
                 <button
                   type="button"
                   onClick={next}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-white/40"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-[#ffde5a] hover:text-[#ffde5a]"
                   aria-label="Next"
                 >
                   <ChevronRight size={16} />
@@ -132,8 +132,8 @@ export default function FlairSlider() {
                 }}
                 className={`group relative overflow-hidden rounded-2xl border p-4 text-left transition-all ${
                   idx === i
-                    ? "border-white/30 bg-[#161630]"
-                    : "border-white/10 bg-[#111122] hover:border-white/20"
+                    ? "border-[#ffde5a]/50 bg-[#455583]"
+                    : "border-white/10 bg-[#38476c] hover:border-white/25"
                 }`}
               >
                 <span
@@ -149,7 +149,7 @@ export default function FlairSlider() {
                 <p className="mt-3 font-['Syne'] text-sm font-bold leading-snug text-white">
                   {f.title}
                 </p>
-                <p className="mt-1 text-[11px] text-slate-400">By {f.author}</p>
+                <p className="mt-1 text-[11px] text-white/65">By {f.author}</p>
               </button>
             ))}
           </div>

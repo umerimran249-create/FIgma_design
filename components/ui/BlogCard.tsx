@@ -13,13 +13,14 @@ export default function BlogCard({ category, title, author, accent }: BlogCardPr
   return (
     <motion.article
       whileHover={{ y: -4 }}
-      className="overflow-hidden rounded-2xl border border-white/10 bg-[#111122]"
+      className="overflow-hidden rounded-2xl border border-white/10 bg-[#38476c]"
     >
       <div
-        className="flex h-[140px] items-center justify-center text-xs text-white/30 lg:h-[180px]"
-        style={{ background: `linear-gradient(135deg, ${accent}33, ${accent}14)` }}
+        className="relative flex h-[140px] items-center justify-center text-xs text-white/30 lg:h-[180px]"
+        style={{ background: `linear-gradient(135deg, ${accent}40, ${accent}10)` }}
       >
-        [ Article Cover ]
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.12),transparent_55%)]" />
+        <span className="relative font-['Syne'] text-4xl font-bold text-white/15">VL</span>
       </div>
       <div className="space-y-2 p-5">
         <span
@@ -29,7 +30,7 @@ export default function BlogCard({ category, title, author, accent }: BlogCardPr
           {category}
         </span>
         <h3 className="font-['Syne'] text-[15px] font-semibold leading-6 text-white">{title}</h3>
-        <div className="flex items-center text-xs text-slate-400">
+        <div className="flex items-center text-xs text-white/60">
           <span>By {author}</span>
           <span className="ml-auto" style={{ color: accent }}>
             Read more →
