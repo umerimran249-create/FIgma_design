@@ -1,45 +1,36 @@
-import SectionLabel from "@/components/ui/SectionLabel";
+"use client";
 
-const items = [
-  {
-    id: "01",
-    title: "Lead the Curve",
-    body: "March on an upward trajectory with innovative strategies and seamless integration that propels your business forward consistently.",
-  },
-  {
-    id: "02",
-    title: "The Extra Mile",
-    body: "Exceed every expectation with a creative and comprehensive customer-centric approach designed entirely around your goals and outcomes.",
-  },
-  {
-    id: "03",
-    title: "Collaborate for Excellence",
-    body: "Customise your path to success with outcome-based deliveries and dedicated support at every stage of your digital journey.",
-  },
-];
+import SectionLabel from "@/components/ui/SectionLabel";
+import Reveal from "@/components/ui/Reveal";
+import AutoMarquee from "@/components/ui/AutoMarquee";
+
+const pillars = ["Lead the curve", "Go the extra mile", "Build together", "Ship faster", "Scale smarter"];
 
 export default function WhyUs() {
   return (
-    <section id="about" className="bg-[#1f2942]">
+    <section id="about" className="section-flow overflow-hidden">
       <div className="container-vl">
-        <SectionLabel text="WHY CHOOSE US" />
-        <h2 className="mt-4 font-['Syne'] text-[26px] font-bold leading-tight text-white sm:text-3xl lg:text-4xl">
-          Foresight, precision
-          <br />
-          and creativity.
-        </h2>
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {items.map((item) => (
-            <article key={item.id} className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#38476c] p-7 transition-colors hover:border-[#ffde5a]/40">
-              <span className="pointer-events-none absolute right-5 top-4 font-['Syne'] text-6xl font-bold text-white/10">{item.id}</span>
-              <span className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-[10px] font-['Syne'] text-sm font-bold text-[#1f2942]" style={{ background: "linear-gradient(135deg,#ffde5a,#ffb648)" }}>
-                {item.id}
-              </span>
-              <h3 className="font-['Syne'] text-lg font-bold text-white">{item.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-white/70">{item.body}</p>
-            </article>
+        <Reveal>
+          <SectionLabel text="Why us" />
+          <h2 className="mt-4 font-['Syne'] text-[clamp(2rem,6vw,3.5rem)] font-bold leading-tight text-white">
+            Cutting-edge
+            <br />
+            technology.
+          </h2>
+        </Reveal>
+      </div>
+
+      <div className="mt-10 border-y border-white/[0.06] py-6">
+        <AutoMarquee speed="slow" gapClass="gap-16 sm:gap-24">
+          {pillars.map((p) => (
+            <span
+              key={p}
+              className="whitespace-nowrap font-['Syne'] text-[clamp(1.5rem,4vw,2.5rem)] font-bold text-white/25 transition-colors hover:text-[#ffde5a]/60"
+            >
+              {p}
+            </span>
           ))}
-        </div>
+        </AutoMarquee>
       </div>
     </section>
   );

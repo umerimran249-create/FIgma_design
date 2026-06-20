@@ -1,243 +1,99 @@
-'use client';
+"use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { MapPin, Mail } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Mail, MapPin } from "lucide-react";
+import GlobeCanvas from "@/components/ui/GlobeCanvas";
 import SectionLabel from "@/components/ui/SectionLabel";
-import SplineBackground from "@/components/ui/SplineBackground";
+import Reveal from "@/components/ui/Reveal";
 import { locations, siteConfig } from "@/lib/site-data";
 
 export default function LocationsMap() {
   const [active, setActive] = useState(locations[0].id);
-  const current = locations.find((l) => l.id === active) ?? locations[0];
+  const activeIndex = locations.findIndex((l) => l.id === active);
+
+  const offices = useMemo(
+    () =>
+      locations.map((loc, i) => ({
+        lat: loc.lat,
+        lng: loc.lng,
+        primary: i === 0,
+      })),
+    []
+  );
 
   return (
-    <section id="locations" className="relative overflow-hidden bg-[#2e3b5b]">
-      <SplineBackground variant="grid" />
-      <div className="container-vl relative z-10">
-        <div className="flex flex-col items-start gap-4">
+    <section
+      id="locations"
+      className="section-flow section-flow--fill-min relative flex flex-col justify-center overflow-hidden"
+    >
+      <div className="container-vl relative z-10 w-full py-16 sm:py-20 lg:py-24">
+        <Reveal>
           <SectionLabel text="WHERE WE WORK" />
-          <h2 className="font-['Syne'] text-3xl font-bold text-white sm:text-4xl">
-            Global presence,
-            <br />
-            local partnership.
+          <h2 className="mt-4 max-w-[480px] font-['Syne'] text-[clamp(30px,3.4vw,42px)] font-bold leading-[1.14] tracking-tight text-white">
+            Global presence, local partnership.
           </h2>
-          <p className="max-w-xl text-[15px] leading-7 text-white/70">
-            Headquartered in Melbourne with engagement studios across the Asia-Pacific.
-            Drop us a line — we&apos;ll find the nearest team.
+          <p className="mt-5 max-w-[460px] text-base leading-[1.65] text-[#9099B8]">
+            Headquartered in Melbourne with engagement studios across the Asia-Pacific. Drop us a line
+            — we&apos;ll find the nearest team.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-10 grid gap-6 sm:mt-12 sm:gap-8 lg:grid-cols-[1.5fr_1fr]">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden rounded-[20px] border border-white/10 bg-[radial-gradient(circle_at_20%_20%,rgba(255,222,90,0.16),transparent_55%),radial-gradient(circle_at_80%_80%,rgba(255,182,72,0.14),transparent_55%),#1f2942] p-3 shadow-[0_20px_60px_rgba(0,0,0,0.35)] sm:p-6"
-          >
-            <div className="relative aspect-[16/10] w-full sm:aspect-[16/9]">
-              <WorldMapSvg />
-              {locations.map((loc) => (
-                <MapPinMark
-                  key={loc.id}
-                  loc={loc}
-                  active={active === loc.id}
-                  onClick={() => setActive(loc.id)}
-                />
-              ))}
-            </div>
-          </motion.div>
+        <div className="mt-14 grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-[50px]">
+          <Reveal delay={0.08}>
+            <GlobeCanvas offices={offices} activeIndex={activeIndex >= 0 ? activeIndex : 0} />
+          </Reveal>
 
-          <div className="space-y-4">
-            {locations.map((loc, i) => {
-              const isActive = active === loc.id;
-              return (
-                <motion.button
-                  key={loc.id}
-                  type="button"
-                  onClick={() => setActive(loc.id)}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  className={`relative w-full overflow-hidden rounded-2xl border p-4 text-left transition-all sm:p-5 ${
-                    isActive
-                      ? "border-[#ffde5a]/70 bg-[#38476c] shadow-[0_8px_32px_rgba(255,222,90,0.15)]"
-                      : "border-white/10 bg-[#1f2942] hover:border-white/25"
-                  }`}
-                >
-                  <span
-                    className={`absolute left-0 top-0 h-full w-[3px] transition-all ${
-                      isActive ? "bg-[linear-gradient(180deg,#ffde5a,#ffb648)]" : "bg-transparent"
-                    }`}
-                  />
-                  <div className="flex items-start gap-3">
-                    <span className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#ffde5a]/50 bg-[#ffde5a]/10 text-[#ffde5a]">
-                      <MapPin size={16} />
-                    </span>
+          <Reveal delay={0.12} className="flex flex-col">
+            <div>
+              {locations.map((loc, i) => {
+                const isActive = active === loc.id;
+                return (
+                  <button
+                    key={loc.id}
+                    type="button"
+                    onClick={() => setActive(loc.id)}
+                    onMouseEnter={() => setActive(loc.id)}
+                    className={`flex w-full gap-4 border-t border-white/[0.08] py-[22px] text-left transition-[padding-left] duration-[250ms] ${
+                      isActive ? "pl-2.5" : "hover:pl-2.5"
+                    } ${i === locations.length - 1 ? "border-b border-white/[0.08]" : ""}`}
+                  >
+                    <MapPin
+                      size={18}
+                      className={`mt-0.5 shrink-0 transition-colors duration-[250ms] ${
+                        isActive ? "text-[#F2B632]" : "text-[#5D6585] group-hover:text-[#F2B632]"
+                      }`}
+                    />
                     <div>
-                      <p className="font-['Syne'] text-base font-bold text-white">
+                      <p
+                        className={`text-lg font-bold tracking-tight transition-colors duration-[250ms] ${
+                          isActive ? "text-[#F2B632]" : "text-white"
+                        }`}
+                      >
                         {loc.city}, {loc.country}
                       </p>
-                      <p className="text-xs uppercase tracking-wider text-[#ffde5a]">
+                      <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.08em] text-[#F2B632] opacity-85">
                         {loc.role}
                       </p>
-                      <p className="mt-2 text-sm leading-6 text-white/75">
-                        {loc.address}
-                      </p>
+                      <p className="text-sm leading-[1.55] text-[#9099B8]">{loc.address}</p>
                     </div>
-                  </div>
-                </motion.button>
-              );
-            })}
+                  </button>
+                );
+              })}
+            </div>
 
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="mt-2 flex items-center justify-between gap-2 rounded-2xl border border-white/10 bg-[#1f2942] p-4 text-sm text-white/75 transition-all hover:border-[#ffde5a]/40 hover:text-white"
-            >
-              <span className="flex items-center gap-3">
-                <Mail size={16} className="text-[#ffde5a]" />
+            <div className="mt-[30px] flex items-center justify-between border-t border-white/[0.08] pt-[26px]">
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="flex items-center gap-2.5 text-[15.5px] font-semibold text-white transition-colors hover:text-[#F2B632]"
+              >
+                <Mail size={16} className="text-[#F2B632]" />
                 {siteConfig.email}
-              </span>
-              <span className="text-[#ffde5a]">→</span>
-            </a>
-          </div>
+              </a>
+              <span className="text-[#F2B632]">→</span>
+            </div>
+          </Reveal>
         </div>
-
-        <motion.div
-          key={current.id}
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mt-10 overflow-hidden rounded-[24px] border border-white/10"
-        >
-          <iframe
-            title={`${current.city} office`}
-            src={`https://maps.google.com/maps?q=${current.lat},${current.lng}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-            className="h-[260px] w-full sm:h-[360px]"
-            style={{ filter: "invert(0.9) hue-rotate(180deg) saturate(0.8)" }}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </motion.div>
       </div>
     </section>
-  );
-}
-
-function MapPinMark({
-  loc,
-  active,
-  onClick,
-}: {
-  loc: (typeof locations)[number];
-  active: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="absolute z-10 -translate-x-1/2 -translate-y-1/2 outline-none"
-      style={{ left: `${loc.mapX}%`, top: `${loc.mapY}%` }}
-      aria-label={`${loc.city}, ${loc.country}`}
-    >
-      <span className="relative flex h-3 w-3 items-center justify-center">
-        <span
-          className="absolute inline-flex h-full w-full rounded-full opacity-60"
-          style={{
-            background: active ? "#ffde5a" : "#ffb648",
-            animation: "pulse 1.6s ease-out infinite",
-          }}
-        />
-        <span
-          className="absolute inline-flex h-7 w-7 rounded-full"
-          style={{
-            background: active
-              ? "radial-gradient(circle, rgba(255,222,90,0.5), transparent 70%)"
-              : "radial-gradient(circle, rgba(255,182,72,0.4), transparent 70%)",
-          }}
-        />
-        <span
-          className="relative inline-flex h-2.5 w-2.5 rounded-full ring-2 ring-white/40"
-          style={{ background: active ? "#ffde5a" : "#ffb648" }}
-        />
-      </span>
-      <span
-        className={`absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#1f2942]/90 px-2 py-1 text-[11px] font-semibold backdrop-blur transition-opacity ${
-          active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-        }`}
-        style={{ color: active ? "#ffde5a" : "white" }}
-      >
-        {loc.city}
-      </span>
-    </button>
-  );
-}
-
-function WorldMapSvg() {
-  return (
-    <svg
-      viewBox="0 0 1000 500"
-      className="absolute inset-0 h-full w-full"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <radialGradient id="bgGrad" cx="50%" cy="50%" r="60%">
-          <stop offset="0%" stopColor="#37456a" />
-          <stop offset="100%" stopColor="#1f2942" />
-        </radialGradient>
-        <pattern id="dots" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1.2" fill="rgba(255,222,90,0.55)" />
-        </pattern>
-        <mask id="continentMask">
-          <rect width="1000" height="500" fill="black" />
-          {/* North America */}
-          <path
-            d="M120,120 C180,90 240,95 280,110 C320,120 340,140 350,170 C360,210 340,250 310,260 C280,275 240,270 200,260 C160,250 130,225 115,195 C100,170 95,140 120,120 Z"
-            fill="white"
-          />
-          {/* South America */}
-          <path
-            d="M280,280 C310,275 340,290 350,320 C360,360 345,400 320,430 C300,450 285,455 275,440 C260,420 270,380 275,340 C277,315 275,295 280,280 Z"
-            fill="white"
-          />
-          {/* Europe */}
-          <path
-            d="M470,130 C510,125 545,135 565,155 C575,170 565,190 540,200 C510,210 475,200 460,180 C450,160 455,140 470,130 Z"
-            fill="white"
-          />
-          {/* Africa */}
-          <path
-            d="M490,210 C530,205 570,220 585,255 C600,300 590,350 565,385 C545,410 520,418 505,400 C490,380 485,345 485,310 C485,270 480,225 490,210 Z"
-            fill="white"
-          />
-          {/* Asia */}
-          <path
-            d="M580,140 C660,125 760,140 815,170 C855,190 870,220 850,245 C825,270 770,275 715,265 C660,255 610,235 585,210 C570,190 570,160 580,140 Z"
-            fill="white"
-          />
-          {/* India */}
-          <path
-            d="M700,230 C720,225 740,245 745,275 C745,290 730,300 715,295 C695,285 685,255 690,240 C692,235 696,231 700,230 Z"
-            fill="white"
-          />
-          {/* SE Asia */}
-          <path
-            d="M770,280 C795,275 815,290 815,310 C815,330 795,340 775,335 C755,328 745,310 750,295 C753,287 760,282 770,280 Z"
-            fill="white"
-          />
-          {/* Australia */}
-          <path
-            d="M820,370 C850,360 890,365 905,385 C915,405 900,425 870,430 C840,432 810,422 800,400 C795,385 805,375 820,370 Z"
-            fill="white"
-          />
-        </mask>
-      </defs>
-      <rect width="1000" height="500" fill="url(#bgGrad)" />
-      <rect width="1000" height="500" fill="url(#dots)" mask="url(#continentMask)" />
-      <rect width="1000" height="500" fill="none" stroke="rgba(255,255,255,0.04)" />
-    </svg>
   );
 }

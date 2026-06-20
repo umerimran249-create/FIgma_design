@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import SectionLabel from "@/components/ui/SectionLabel";
+import { easeSmooth, inViewReplay } from "@/lib/motion";
 import { flairs } from "@/lib/site-data";
 
 export default function FlairGrid() {
   return (
-    <section className="bg-[#2e3b5b]">
+    <section className="bg-[#2e3b5b] py-20 sm:py-24 lg:py-[120px]">
       <div className="container-vl">
         <SectionLabel text="FLAIRS YOU MIGHT HAVE MISSED" />
         <h2 className="mt-4 font-['Syne'] text-[26px] font-bold leading-tight text-white sm:text-3xl lg:text-4xl">
@@ -23,8 +24,8 @@ export default function FlairGrid() {
               key={f.slug}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ delay: (i % 3) * 0.08 }}
+              viewport={inViewReplay}
+              transition={{ delay: (i % 3) * 0.08, ease: easeSmooth }}
               whileHover={{ y: -6 }}
               className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#38476c]"
             >

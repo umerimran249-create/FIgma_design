@@ -1,52 +1,53 @@
-import SectionLabel from "@/components/ui/SectionLabel";
+"use client";
 
-const testimonials = [
-  {
-    quote:
-      "Vista Logica transformed how we think about data. Their cloud migration cut our infrastructure costs by 40% while doubling our analytics capability.",
-    name: "James M.",
-    role: "CTO, Telecom Enterprise",
-    init: "JM",
-    accent: "#ffde5a",
-  },
-  {
-    quote:
-      "The digital experience redesign they delivered increased our mobile conversion rate by 3x in just 6 weeks. Absolutely world-class team and execution.",
-    name: "Sarah R.",
-    role: "Head of Digital, Retail Group",
-    init: "SR",
-    accent: "#ffb648",
-  },
-];
+import ScrollSection3D from "@/components/ui/ScrollSection3D";
+import SectionLabel from "@/components/ui/SectionLabel";
+import SectionOrbs from "@/components/ui/SectionOrbs";
+import Reveal from "@/components/ui/Reveal";
+import TestimonialSpotlight, { featuredTestimonials } from "@/components/ui/TestimonialSpotlight";
+import { testimonials } from "@/lib/site-data";
+
+const featured = featuredTestimonials(testimonials);
 
 export default function Testimonials() {
   return (
-    <section className="bg-[#1f2942]">
-      <div className="container-vl">
-        <SectionLabel text="CLIENT VOICES" />
-        <h2 className="mt-4 font-['Syne'] text-[26px] font-bold leading-tight text-white sm:text-3xl lg:text-4xl">Trusted by leaders.</h2>
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          {testimonials.map((item) => (
-            <article key={item.name} className="relative rounded-2xl border border-white/10 bg-[#38476c] p-6">
-              <span className="absolute bottom-5 left-0 top-5 w-[3px] rounded-r" style={{ background: "linear-gradient(180deg,#ffde5a,#ffb648)" }} />
-              <p className="mb-4 text-sm text-[#ffde5a]">★★★★★</p>
-              <p className="text-sm italic leading-7 text-white/80">{item.quote}</p>
-              <div className="mt-5 flex items-center gap-3">
-                <div
-                  className="flex h-10 w-10 items-center justify-center rounded-full border font-['Syne'] text-sm font-bold"
-                  style={{ color: item.accent, borderColor: `${item.accent}66`, background: `${item.accent}1F` }}
-                >
-                  {item.init}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-white">{item.name}</p>
-                  <p className="text-xs text-white/60">{item.role}</p>
-                </div>
+    <ScrollSection3D id="clients" fillMin className="section-flow overflow-hidden" tilt={4}>
+      <SectionOrbs />
+      <div className="relative flex w-full flex-1 flex-col justify-center py-6 sm:py-10">
+        <div className="container-vl relative z-10 mb-6 text-center sm:mb-8">
+          <Reveal>
+            <SectionLabel text="Client voices" />
+            <h2 className="mx-auto mt-4 max-w-2xl font-['Syne'] text-[clamp(2rem,6vw,3.25rem)] font-bold leading-tight text-white">
+              Hear it from
+              <br />
+              <span className="gradient-text">our clients.</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-white/55 sm:text-base">
+              Four leaders. Four industries. One thing in common — execution that delivered.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1} className="mt-8 flex flex-wrap justify-center gap-8 sm:gap-12">
+            {[
+              { value: "95%", label: "Would recommend" },
+              { value: "4.9", label: "Client rating" },
+            ].map((s) => (
+              <div key={s.label} className="text-center">
+                <p className="font-['Syne'] text-2xl font-bold text-[#ffde5a] sm:text-3xl">
+                  {s.value}
+                </p>
+                <p className="mt-1 text-[10px] uppercase tracking-[0.15em] text-white/40">
+                  {s.label}
+                </p>
               </div>
-            </article>
-          ))}
+            ))}
+          </Reveal>
+        </div>
+
+        <div className="relative z-10 w-full">
+          <TestimonialSpotlight items={featured} />
         </div>
       </div>
-    </section>
+    </ScrollSection3D>
   );
 }

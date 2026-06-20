@@ -30,7 +30,7 @@ const faqs = [
 export default function FAQ() {
   const [open, setOpen] = useState(0);
   return (
-    <section className="bg-[#1f2942]">
+    <section className="section-flow">
       <div className="container-vl">
         <SectionLabel text="FAQ" />
         <h2 className="mt-4 font-['Syne'] text-[26px] font-bold leading-tight text-white sm:text-3xl lg:text-4xl">Common questions.</h2>

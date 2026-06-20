@@ -1,27 +1,30 @@
-import Button from "@/components/ui/Button";
+"use client";
+
+import Link from "next/link";
 import SectionLabel from "@/components/ui/SectionLabel";
+import Reveal from "@/components/ui/Reveal";
 
 export default function CTA() {
   return (
-    <section id="contact" className="relative bg-[#2e3b5b]">
-      <div className="pointer-events-none absolute -left-[150px] -top-[80px] h-[500px] w-[500px] rounded-full bg-[rgba(255,222,90,0.10)] blur-[80px]" />
-      <div className="pointer-events-none absolute -bottom-[50px] right-[-100px] h-[400px] w-[400px] rounded-full bg-[rgba(255,222,90,0.06)] blur-[80px]" />
-      <div className="container-vl relative z-10 text-center">
-        <SectionLabel text="READY TO LEAD THE DIGITAL EVOLUTION?" />
-        <h2 className="mt-4 font-['Syne'] text-[32px] font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-          The time to act
-          <br />
-          is now.
-        </h2>
-        <p className="mx-auto mt-4 max-w-md text-base leading-7 text-white/70">
-          Let&apos;s build the future of your business together — with data, cloud, and design working in perfect harmony.
-        </p>
-        <Button href="/contact" size="lg" className="mt-8 w-full max-w-[320px]">
-          Book a Free Consultation →
-        </Button>
-        <a href="/services" className="mt-5 block text-sm text-white/50 transition-colors hover:text-[#ffde5a]">
-          or explore services first
-        </a>
+    <section id="contact" className="section-flow relative text-center">
+      <div className="container-vl">
+        <Reveal>
+          <SectionLabel text="Let's talk" />
+          <h2 className="mt-4 font-['Syne'] text-[clamp(2.5rem,8vw,4.5rem)] font-bold leading-[1.05] text-white">
+            The time to act
+            <br />
+            <span className="gradient-text">is now.</span>
+          </h2>
+        </Reveal>
+        <Reveal delay={0.15} className="mt-8">
+          <Link
+            href="/contact"
+            className="inline-flex h-14 items-center rounded-full px-10 text-base font-semibold text-[#1f2942]"
+            style={{ background: "linear-gradient(135deg,#ffde5a,#ffb648)" }}
+          >
+            Book a Free Consultation →
+          </Link>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from "framer-motion";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 const steps = [
@@ -12,7 +11,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="bg-[#2e3b5b]">
+    <section className="section-flow">
       <div className="container-vl">
         <SectionLabel text="HOW WE WORK" />
         <h2 className="mt-4 font-['Syne'] text-[26px] font-bold leading-tight text-white sm:text-3xl lg:text-4xl">
@@ -23,32 +22,20 @@ export default function Process() {
         <p className="mt-4 text-sm text-white/70">A proven four-phase engagement model that delivers results.</p>
         <div className="mt-10 space-y-8">
           {steps.map((step, i) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="flex gap-5"
-            >
+            <div key={step.title} className="flex gap-5">
               <div className="flex flex-col items-center">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#ffde5a] bg-[rgba(255,222,90,0.12)] font-['Syne'] text-sm font-bold text-[#ffde5a]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#ffde5a] font-['Syne'] text-sm font-bold text-[#ffde5a]">
                   {i + 1}
                 </div>
                 {i < steps.length - 1 && (
-                  <motion.div
-                    initial={{ scaleY: 0 }}
-                    whileInView={{ scaleY: 1 }}
-                    viewport={{ once: true }}
-                    className="mt-1 h-16 w-0.5 origin-top bg-gradient-to-b from-[rgba(255,222,90,0.55)] to-transparent"
-                  />
+                  <div className="mt-1 h-16 w-0.5 origin-top bg-gradient-to-b from-[rgba(255,222,90,0.55)] to-transparent" />
                 )}
               </div>
               <div>
                 <h3 className="font-['Syne'] text-base font-semibold text-white">{step.title}</h3>
                 <p className="mt-1 text-[13px] leading-6 text-white/70">{step.body}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

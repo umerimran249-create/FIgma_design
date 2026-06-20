@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Vista Logica — Optimize. Innovate. Lead.",
+  title: "Vista Logica — Innovate. Collaborate. Accelerate.",
   description:
-    "Optimising business outcomes through technology and digital enablement. Cloud, data, and digital solutions from Melbourne, Australia.",
+    "Bringing strategy, technology, and expertise together to help organisations design smarter solutions, scale capabilities, and achieve measurable business outcomes.",
   keywords:
     "data analytics, cloud enablement, digital experience, AI, Melbourne",
   openGraph: {

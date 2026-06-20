@@ -1,56 +1,30 @@
 {
   "pages": {
-    "/_not-found/page": [
-      "static/chunks/webpack-91b2d14d0f678b80.js",
-      "static/chunks/fd9d1056-00bb33a35b5f8051.js",
-      "static/chunks/23-68b493f91180a142.js",
-      "static/chunks/main-app-7a871fdf3890299a.js",
-      "static/chunks/app/_not-found/page-8520002249bfd8d4.js"
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
     ],
     "/layout": [
-      "static/chunks/webpack-91b2d14d0f678b80.js",
-      "static/chunks/fd9d1056-00bb33a35b5f8051.js",
-      "static/chunks/23-68b493f91180a142.js",
-      "static/chunks/main-app-7a871fdf3890299a.js",
-      "static/css/f38f5e623e854985.css",
-      "static/chunks/app/layout-24cca2f37f6c0477.js"
-    ],
-    "/page": [
-      "static/chunks/webpack-91b2d14d0f678b80.js",
-      "static/chunks/fd9d1056-00bb33a35b5f8051.js",
-      "static/chunks/23-68b493f91180a142.js",
-      "static/chunks/main-app-7a871fdf3890299a.js",
-      "static/chunks/322-d788e27d83ff7ba8.js",
-      "static/chunks/620-bc825441e01b3fb2.js",
-      "static/chunks/939-68dc6414dc49de86.js",
-      "static/chunks/app/page-6993f978dbdd632c.js"
-    ],
-    "/contact/page": [
-      "static/chunks/webpack-91b2d14d0f678b80.js",
-      "static/chunks/fd9d1056-00bb33a35b5f8051.js",
-      "static/chunks/23-68b493f91180a142.js",
-      "static/chunks/main-app-7a871fdf3890299a.js",
-      "static/chunks/322-d788e27d83ff7ba8.js",
-      "static/chunks/939-68dc6414dc49de86.js",
-      "static/chunks/app/contact/page-f331b6e7389a3e95.js"
-    ],
-    "/vista-flair/page": [
-      "static/chunks/webpack-91b2d14d0f678b80.js",
-      "static/chunks/fd9d1056-00bb33a35b5f8051.js",
-      "static/chunks/23-68b493f91180a142.js",
-      "static/chunks/main-app-7a871fdf3890299a.js",
-      "static/chunks/322-d788e27d83ff7ba8.js",
-      "static/chunks/939-68dc6414dc49de86.js",
-      "static/chunks/app/vista-flair/page-7903c1155586e1bb.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
     ],
     "/services/page": [
-      "static/chunks/webpack-91b2d14d0f678b80.js",
-      "static/chunks/fd9d1056-00bb33a35b5f8051.js",
-      "static/chunks/23-68b493f91180a142.js",
-      "static/chunks/main-app-7a871fdf3890299a.js",
-      "static/chunks/322-d788e27d83ff7ba8.js",
-      "static/chunks/939-68dc6414dc49de86.js",
-      "static/chunks/app/services/page-4fd6f9e7e18d959c.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/services/page.js"
+    ],
+    "/vista-flair/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/vista-flair/page.js"
+    ],
+    "/contact/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/contact/page.js"
     ]
   }
 }

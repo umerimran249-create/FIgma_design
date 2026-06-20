@@ -15,20 +15,26 @@ export default function Navbar() {
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", fn);
+    fn();
+    window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
   return (
     <>
-      <header
-        className="fixed top-0 z-50 w-full border-b border-white/10 backdrop-blur-xl"
-        style={{
-          background: "rgba(31, 41, 66, 0.85)",
-          boxShadow: scrolled ? "0 4px 32px rgba(0,0,0,0.4)" : "none",
-        }}
+      <motion.header
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:pt-5"
       >
-        <div className="container-vl flex h-[64px] items-center justify-between lg:h-[72px]">
+        <div
+          className={`flex w-full max-w-[1100px] items-center justify-between rounded-full border px-4 py-2.5 transition-all duration-300 sm:px-5 ${
+            scrolled
+              ? "border-white/[0.08] bg-transparent backdrop-blur-md"
+              : "border-transparent bg-transparent backdrop-blur-none"
+          }`}
+        >
           <Link href="/" className="flex items-center" aria-label="Vista Logica">
             <Image
               src="/logo-color.svg"
@@ -36,44 +42,51 @@ export default function Navbar() {
               width={3162}
               height={645}
               priority
-              className="h-7 w-auto sm:h-8"
+              className="h-6 w-auto sm:h-7"
             />
           </Link>
-          <nav className="hidden items-center gap-8 md:flex">
+
+          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
             {navLinks.map((item) => {
               const active = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative text-[15px] transition-colors ${
-                    active ? "text-[#ffde5a]" : "text-white/70 hover:text-white"
+                  className={`relative rounded-full px-4 py-1.5 text-sm transition-colors ${
+                    active ? "text-[#1f2942]" : "text-white/70 hover:text-white"
                   }`}
                 >
-                  {item.label}
                   {active && (
                     <motion.span
-                      layoutId="nav-underline"
-                      className="absolute -bottom-1 left-0 h-[2px] w-full"
-                      style={{ background: "linear-gradient(90deg,#ffde5a,#ffb648)" }}
+                      layoutId="nav-pill"
+                      className="absolute inset-0 rounded-full"
+                      style={{ background: "linear-gradient(135deg,#ffde5a,#ffb648)" }}
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
+                  <span className="relative z-10">{item.label}</span>
                 </Link>
               );
             })}
           </nav>
+
           <Link
             href="/contact"
-            className="hidden h-10 items-center rounded-[100px] px-5 text-[13px] font-semibold text-[#1f2942] shadow-[0_4px_16px_rgba(255,222,90,0.35)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(255,222,90,0.5)] md:flex"
-            style={{ background: "linear-gradient(135deg,#ffde5a,#ffb648)" }}
+            className="hidden h-9 items-center rounded-full border border-white/20 px-5 text-[13px] font-semibold text-white transition-all hover:border-[#ffde5a] hover:text-[#ffde5a] md:flex"
           >
-            Get in Touch
+            Get In Touch
           </Link>
-          <button onClick={() => setOpen((v) => !v)} className="text-white md:hidden" aria-label="Toggle menu">
-            {open ? <X size={24} /> : <Menu size={24} />}
+
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="text-white md:hidden"
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
-      </header>
+      </motion.header>
 
       <AnimatePresence>
         {open && (
@@ -82,19 +95,19 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 md:hidden"
-            style={{ background: "rgba(31, 41, 66, 0.97)" }}
+            style={{ background: "rgba(26, 34, 56, 0.98)" }}
           >
             {navLinks.map((item, i) => (
               <motion.div
                 key={item.href}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
               >
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className={`font-['Syne'] text-3xl font-bold ${
+                  className={`font-['Syne'] text-4xl font-bold ${
                     pathname === item.href ? "text-[#ffde5a]" : "text-white"
                   }`}
                 >
@@ -105,10 +118,10 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-full px-7 py-3 text-sm font-semibold text-[#1f2942]"
+              className="mt-2 rounded-full px-8 py-3.5 text-sm font-semibold text-[#1f2942]"
               style={{ background: "linear-gradient(135deg,#ffde5a,#ffb648)" }}
             >
-              Get in Touch
+              Get In Touch
             </Link>
           </motion.div>
         )}

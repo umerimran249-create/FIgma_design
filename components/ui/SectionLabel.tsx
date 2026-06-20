@@ -1,20 +1,18 @@
 type SectionLabelProps = {
   text: string;
   color?: string;
+  className?: string;
 };
 
 export default function SectionLabel({
   text,
   color = "#ffde5a",
+  className = "",
 }: SectionLabelProps) {
   return (
     <span
-      className="inline-flex rounded-pill border px-4 py-1.5 text-[11px] font-semibold tracking-[0.12em]"
-      style={{
-        color,
-        borderColor: "rgba(255, 222, 90, 0.35)",
-        background: "rgba(255, 222, 90, 0.08)",
-      }}
+      className={`inline-block text-[11px] font-semibold uppercase tracking-[0.2em] ${className}`}
+      style={{ color }}
     >
       {text}
     </span>

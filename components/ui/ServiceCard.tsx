@@ -1,7 +1,6 @@
 'use client';
 
 import { LucideIcon } from "lucide-react";
-import { motion } from "framer-motion";
 
 type ServiceCardProps = {
   title: string;
@@ -10,6 +9,7 @@ type ServiceCardProps = {
   accent: string;
   gradient: string;
   Icon: LucideIcon;
+  index?: number;
 };
 
 export default function ServiceCard({
@@ -17,38 +17,25 @@ export default function ServiceCard({
   description,
   features,
   accent,
-  gradient,
   Icon,
+  index = 0,
 }: ServiceCardProps) {
   return (
-    <motion.article
-      whileHover={{ y: -4 }}
-      className="overflow-hidden rounded-[20px] border border-white/10 bg-[#38476c] shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
-      style={{ transition: "all 0.3s ease" }}
-    >
-      <div className="h-[3px] w-full" style={{ background: gradient }} />
-      <div className="p-6">
-        <div
-          className="flex h-[52px] w-[52px] items-center justify-center rounded-[14px] border"
-          style={{ background: `${accent}1F`, borderColor: `${accent}66` }}
-        >
-          <Icon size={22} color={accent} />
-        </div>
-        <h3 className="mt-4 font-['Syne'] text-xl font-bold text-white">{title}</h3>
-        <p className="mt-2 text-sm leading-6 text-white/70">{description}</p>
-        <hr className="my-5 border-white/10" />
-        <ul className="space-y-2">
-          {features.map((feature) => (
-            <li key={feature} className="flex items-start gap-2.5 text-sm text-white/75">
-              <span
-                className="mt-2 inline-block h-1.5 w-1.5 rounded-full"
-                style={{ backgroundColor: accent }}
-              />
-              {feature}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </motion.article>
+    <div className={`h-full ${index > 0 ? "lg:border-l lg:border-white/[0.08] lg:pl-8" : ""}`}>
+      <Icon size={22} color={accent} className="mb-4" />
+      <h3 className="font-['Syne'] text-lg font-bold text-white sm:text-xl">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-white/70">{description}</p>
+      <ul className="mt-5 space-y-2 border-t border-white/[0.08] pt-5">
+        {features.slice(0, 4).map((feature) => (
+          <li key={feature} className="flex items-start gap-2 text-xs text-white/75 sm:text-sm">
+            <span
+              className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full"
+              style={{ backgroundColor: accent }}
+            />
+            {feature}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

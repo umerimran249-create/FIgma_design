@@ -1,4 +1,4 @@
-// File: C:\Users\umer.imran\Desktop\figma\app\vista-flair\page.tsx
+// File: D:\figma\app\vista-flair\page.tsx
 import * as entry from '../../../../app/vista-flair/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import PageBackdrop from "@/components/ui/PageBackdrop";
 import ContactHero from "@/components/sections/ContactHero";
 import LocationsMap from "@/components/sections/LocationsMap";
 
@@ -13,8 +14,9 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
+      <PageBackdrop />
       <Navbar />
-      <main>
+      <main className="page-flow seamless-scroll">
         <ContactHero />
         <LocationsMap />
       </main>

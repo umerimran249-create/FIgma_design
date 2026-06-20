@@ -1,31 +1,37 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import PageBackdrop from "@/components/ui/PageBackdrop";
 import Hero from "@/components/sections/Hero";
+import ExecutionStatement from "@/components/sections/ExecutionStatement";
+import HowWeHelp from "@/components/sections/HowWeHelp";
+import MarqueeBanner from "@/components/sections/MarqueeBanner";
 import Stats from "@/components/sections/Stats";
-import Services from "@/components/sections/Services";
-import WhyUs from "@/components/sections/WhyUs";
-import Process from "@/components/sections/Process";
+import Integrations from "@/components/sections/Integrations";
+import ClientUpdates from "@/components/sections/ClientUpdates";
 import Testimonials from "@/components/sections/Testimonials";
-import VistaFlair from "@/components/sections/VistaFlair";
+import ExploreActivities from "@/components/sections/ExploreActivities";
+import FeaturedInsights from "@/components/sections/FeaturedInsights";
+import ServicesBottomHero from "@/components/sections/ServicesBottomHero";
 import LocationsMap from "@/components/sections/LocationsMap";
-import FAQ from "@/components/sections/FAQ";
-import CTA from "@/components/sections/CTA";
 
 export default function Home() {
   return (
     <>
+      <PageBackdrop />
       <Navbar />
-      <main>
+      <main className="page-flow seamless-scroll">
         <Hero />
+        <MarqueeBanner />
+        <ExecutionStatement />
         <Stats />
-        <Services />
-        <WhyUs />
-        <Process />
+        <HowWeHelp />
+        <Integrations />
+        <ClientUpdates />
         <Testimonials />
-        <VistaFlair />
+        <FeaturedInsights />
+        <ServicesBottomHero />
+        <ExploreActivities />
         <LocationsMap />
-        <FAQ />
-        <CTA />
       </main>
       <Footer />
     </>

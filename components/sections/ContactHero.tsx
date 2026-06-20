@@ -5,8 +5,12 @@ import { useState, FormEvent } from "react";
 import { Mail, MapPin, Send, Linkedin, CheckCircle2 } from "lucide-react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import GradientText from "@/components/ui/GradientText";
-import SplineBackground from "@/components/ui/SplineBackground";
+import Image from "next/image";
+import { easeSmooth, viewport } from "@/lib/motion";
 import { siteConfig } from "@/lib/site-data";
+
+const HERO_BG =
+  "https://www.figma.com/api/mcp/asset/a32c65c2-f20c-4376-a88a-90b9a43e65d9";
 
 export default function ContactHero() {
   const [submitted, setSubmitted] = useState(false);
@@ -21,13 +25,26 @@ export default function ContactHero() {
   };
 
   return (
-    <section className="relative overflow-hidden pt-24 sm:pt-32 lg:pt-36">
-      <SplineBackground variant="particles" />
+    <section className="section-flow section-flow--fill relative flex min-h-[100svh] min-h-[100dvh] flex-col justify-center overflow-hidden pb-16 pt-24 sm:pb-20 sm:pt-32">
+      <Image
+        src={HERO_BG}
+        alt=""
+        fill
+        priority
+        className="object-cover object-center opacity-35"
+        sizes="100vw"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-[#2e3b5b]/80" />
       <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-[rgba(255,222,90,0.15)] blur-3xl" />
       <div className="pointer-events-none absolute right-[-120px] top-60 h-[380px] w-[380px] rounded-full bg-[rgba(255,182,72,0.10)] blur-3xl" />
 
-      <div className="container-vl relative z-10 grid items-start gap-12 lg:grid-cols-[1fr_1.15fr]">
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+      <div className="container-vl relative z-10 grid w-full flex-1 items-center gap-12 lg:grid-cols-[1fr_1.15fr]">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewport}
+          transition={{ duration: 0.5, ease: easeSmooth }}
+        >
           <SectionLabel text="GET IN TOUCH" />
           <h1 className="mt-5 font-['Syne'] text-[36px] font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
             Let&apos;s build the
@@ -72,9 +89,10 @@ export default function ContactHero() {
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.6 }}
-          className="relative overflow-hidden rounded-[20px] border border-white/10 bg-[#38476c] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.4)] sm:rounded-[24px] sm:p-8"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewport}
+          transition={{ delay: 0.15, duration: 0.6, ease: easeSmooth }}
+          className="relative overflow-hidden rounded-[20px] border border-white/10 bg-[#38476c]/95 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.4)] backdrop-blur-sm sm:rounded-[24px] sm:p-8"
         >
           <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-[rgba(255,222,90,0.12)] blur-3xl" />
 

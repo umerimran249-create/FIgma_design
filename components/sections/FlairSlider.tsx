@@ -29,7 +29,7 @@ export default function FlairSlider() {
   const current = featured[i];
 
   return (
-    <section className="bg-[#1f2942]">
+    <section className="bg-[#1f2942] py-20 sm:py-24 lg:py-[120px]">
       <div className="container-vl">
         <SectionLabel text="FLAIRS IN FOCUS" />
         <h2 className="mt-4 font-['Syne'] text-[26px] font-bold leading-tight text-white sm:text-3xl lg:text-4xl">
@@ -121,7 +121,7 @@ export default function FlairSlider() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-1">
+          <div className="flex flex-col gap-4">
             {featured.map((f, idx) => (
               <button
                 key={f.slug}
