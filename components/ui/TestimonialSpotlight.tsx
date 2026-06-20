@@ -58,7 +58,9 @@ export default function TestimonialSpotlight({ items }: TestimonialSpotlightProp
     [n]
   );
 
-  const current = items[active];
+  if (n === 0) return null;
+
+  const current = items[active]!;
 
   return (
     <div
@@ -222,5 +224,7 @@ export default function TestimonialSpotlight({ items }: TestimonialSpotlightProp
   );
 }
 
-export const featuredTestimonials = (all: Testimonial[]) =>
-  [0, 1, 2, 8].map((i) => all[i]).filter(Boolean);
+export const featuredTestimonials = (all: Testimonial[]): Testimonial[] =>
+  [0, 1, 2, 8]
+    .map((i) => all[i])
+    .filter((t): t is Testimonial => t != null);

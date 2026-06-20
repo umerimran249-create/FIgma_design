@@ -8,7 +8,7 @@ import Reveal from "@/components/ui/Reveal";
 import { locations, siteConfig } from "@/lib/site-data";
 
 export default function LocationsMap() {
-  const [active, setActive] = useState(locations[0].id);
+  const [active, setActive] = useState(locations[0]?.id ?? "");
   const activeIndex = locations.findIndex((l) => l.id === active);
 
   const offices = useMemo(
@@ -26,26 +26,35 @@ export default function LocationsMap() {
       id="locations"
       className="section-flow section-flow--fill-min relative flex flex-col justify-center overflow-hidden"
     >
-      <div className="container-vl relative z-10 w-full py-16 sm:py-20 lg:py-24">
-        <Reveal>
-          <SectionLabel text="WHERE WE WORK" />
-          <h2 className="mt-4 max-w-[480px] font-['Syne'] text-[clamp(30px,3.4vw,42px)] font-bold leading-[1.14] tracking-tight text-white">
-            Global presence, local partnership.
-          </h2>
-          <p className="mt-5 max-w-[460px] text-base leading-[1.65] text-[#9099B8]">
-            Headquartered in Melbourne with engagement studios across the Asia-Pacific. Drop us a line
-            — we&apos;ll find the nearest team.
-          </p>
-        </Reveal>
+      <div className="container-vl relative z-10 flex w-full flex-1 flex-col justify-center py-16 sm:py-20 lg:py-24">
+        <div className="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 xl:gap-14">
+          {/* Left — header + globe */}
+          <div className="flex flex-col">
+            <Reveal>
+              <SectionLabel text="WHERE WE WORK" />
+              <h2 className="mt-4 font-['Syne'] text-3xl font-bold text-white sm:text-4xl">
+                Global presence,
+                <br />
+                local partnership.
+              </h2>
+              <p className="mt-4 max-w-xl text-[15px] leading-7 text-white/70">
+                Headquartered in Melbourne with engagement studios across the Asia-Pacific.
+                Drop us a line — we&apos;ll find the nearest team.
+              </p>
+            </Reveal>
 
-        <div className="mt-14 grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-[50px]">
-          <Reveal delay={0.08}>
-            <GlobeCanvas offices={offices} activeIndex={activeIndex >= 0 ? activeIndex : 0} />
-          </Reveal>
+            <Reveal delay={0.1} className="mt-10 sm:mt-12 lg:mt-14">
+              <GlobeCanvas
+                offices={offices}
+                activeIndex={activeIndex >= 0 ? activeIndex : 0}
+              />
+            </Reveal>
+          </div>
 
-          <Reveal delay={0.12} className="flex flex-col">
-            <div>
-              {locations.map((loc, i) => {
+          {/* Right — location list */}
+          <Reveal delay={0.15} className="flex flex-col lg:pt-[12.5rem]">
+            <div className="space-y-0 divide-y divide-white/[0.08]">
+              {locations.map((loc) => {
                 const isActive = active === loc.id;
                 return (
                   <button
@@ -53,44 +62,46 @@ export default function LocationsMap() {
                     type="button"
                     onClick={() => setActive(loc.id)}
                     onMouseEnter={() => setActive(loc.id)}
-                    className={`flex w-full gap-4 border-t border-white/[0.08] py-[22px] text-left transition-[padding-left] duration-[250ms] ${
+                    className={`group relative w-full py-6 text-left transition-all duration-300 first:pt-0 ${
                       isActive ? "pl-2.5" : "hover:pl-2.5"
-                    } ${i === locations.length - 1 ? "border-b border-white/[0.08]" : ""}`}
+                    }`}
                   >
-                    <MapPin
-                      size={18}
-                      className={`mt-0.5 shrink-0 transition-colors duration-[250ms] ${
-                        isActive ? "text-[#F2B632]" : "text-[#5D6585] group-hover:text-[#F2B632]"
-                      }`}
-                    />
-                    <div>
-                      <p
-                        className={`text-lg font-bold tracking-tight transition-colors duration-[250ms] ${
-                          isActive ? "text-[#F2B632]" : "text-white"
+                    <div className="flex items-start gap-3">
+                      <MapPin
+                        size={16}
+                        className={`mt-1 shrink-0 transition-colors duration-300 ${
+                          isActive ? "text-[#ffde5a]" : "text-white/40 group-hover:text-[#ffde5a]"
                         }`}
-                      >
-                        {loc.city}, {loc.country}
-                      </p>
-                      <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.08em] text-[#F2B632] opacity-85">
-                        {loc.role}
-                      </p>
-                      <p className="text-sm leading-[1.55] text-[#9099B8]">{loc.address}</p>
+                      />
+                      <div>
+                        <p className="font-['Syne'] text-base font-bold text-white">
+                          {loc.city}, {loc.country}
+                        </p>
+                        <p
+                          className={`text-xs uppercase tracking-wider ${
+                            isActive ? "text-[#ffde5a]" : "text-white/45"
+                          }`}
+                        >
+                          {loc.role}
+                        </p>
+                        <p className="mt-2 text-sm leading-6 text-white/65">{loc.address}</p>
+                      </div>
                     </div>
                   </button>
                 );
               })}
             </div>
 
-            <div className="mt-[30px] flex items-center justify-between border-t border-white/[0.08] pt-[26px]">
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="flex items-center gap-2.5 text-[15.5px] font-semibold text-white transition-colors hover:text-[#F2B632]"
-              >
-                <Mail size={16} className="text-[#F2B632]" />
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="mt-2 flex items-center justify-between gap-2 border-t border-white/[0.08] pt-6 text-sm text-white/70 transition-colors hover:text-[#ffde5a]"
+            >
+              <span className="flex items-center gap-3">
+                <Mail size={16} className="text-[#ffde5a]" />
                 {siteConfig.email}
-              </a>
-              <span className="text-[#F2B632]">→</span>
-            </div>
+              </span>
+              <span className="text-[#ffde5a]">→</span>
+            </a>
           </Reveal>
         </div>
       </div>

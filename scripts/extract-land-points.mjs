@@ -54,6 +54,6 @@ const points = JSON.parse(raw);
 
 const outDir = path.join(root, "public");
 fs.mkdirSync(outDir, { recursive: true });
-const outFile = path.join(root, "lib", "globe-land-points.json");
+const outFile = path.join(outDir, "globe-land-points.json");
 fs.writeFileSync(outFile, JSON.stringify(points));
 console.log(`Wrote ${points.length} points to ${outFile}`);

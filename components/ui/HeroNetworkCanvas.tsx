@@ -182,12 +182,16 @@ function initScene(THREE: any, stage: HTMLCanvasElement, container: HTMLDivEleme
   nodeDefs.forEach(makeNode);
 
   edgeDefs.forEach(([a, b]) => {
-    const pA = new THREE.Vector3(...nodeDefs[a].p);
-    const pB = new THREE.Vector3(...nodeDefs[b].p);
+    const nodeA = nodeDefs[a];
+    const nodeB = nodeDefs[b];
+    if (!nodeA || !nodeB) return;
+
+    const pA = new THREE.Vector3(...nodeA.p);
+    const pB = new THREE.Vector3(...nodeB.p);
     const isGoldEdge =
-      nodeDefs[a].type.startsWith("gold") && nodeDefs[b].type.startsWith("gold");
+      nodeA.type.startsWith("gold") && nodeB.type.startsWith("gold");
     const midGold =
-      nodeDefs[a].type.startsWith("gold") || nodeDefs[b].type.startsWith("gold");
+      nodeA.type.startsWith("gold") || nodeB.type.startsWith("gold");
 
     const geo = new THREE.BufferGeometry().setFromPoints([pA, pB]);
     disposables.push(geo);

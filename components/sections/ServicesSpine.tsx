@@ -80,8 +80,9 @@ export default function ServicesSpine({ pillars }: ServicesSpineProps) {
 
         canvasRefs.current.forEach((canvas, i) => {
           const panel = panelRefs.current[i];
-          if (!canvas || !panel) return;
-          const visualKey = getServiceVisualKey(pillars[i].slug);
+          const pillar = pillars[i];
+          if (!canvas || !panel || !pillar) return;
+          const visualKey = getServiceVisualKey(pillar.slug);
           const config = serviceVisualConfigs[visualKey];
           panelScenes.push({ scene: buildPanelScene(THREE, canvas, config), panel, index: i });
         });

@@ -280,6 +280,8 @@ export default function NetworkGraphVisual({
           {EDGES.map((edge) => {
             const from = nodeMap[edge.from];
             const to = nodeMap[edge.to];
+            if (!from || !to) return null;
+
             const path = `M ${from.x} ${from.y} L ${to.x} ${to.y}`;
             return (
               <EdgeLayer

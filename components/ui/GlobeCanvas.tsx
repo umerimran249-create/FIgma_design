@@ -235,18 +235,24 @@ function initGlobe(
   focusRef.current = focusOffice;
   focusOffice(0);
 
-  const onMouseDown = (e: MouseEvent) => {
+  const onPointerDown = (e: PointerEvent) => {
     isDragging = true;
     autoSpin = false;
     lastX = e.clientX;
     lastY = e.clientY;
+    canvas.setPointerCapture(e.pointerId);
   };
 
-  const onMouseUp = () => {
+  const onPointerUp = (e: PointerEvent) => {
     isDragging = false;
+    try {
+      canvas.releasePointerCapture(e.pointerId);
+    } catch {
+      /* ignore */
+    }
   };
 
-  const onMouseMove = (e: MouseEvent) => {
+  const onPointerMove = (e: PointerEvent) => {
     if (!isDragging) return;
     const dx = e.clientX - lastX;
     const dy = e.clientY - lastY;
@@ -257,10 +263,10 @@ function initGlobe(
     lastY = e.clientY;
   };
 
-  canvas.addEventListener("mousedown", onMouseDown);
-  window.addEventListener("mouseup", onMouseUp);
-  window.addEventListener("mousemove", onMouseMove);
-  canvas.style.cursor = "grab";
+  canvas.addEventListener("pointerdown", onPointerDown);
+  canvas.addEventListener("pointerup", onPointerUp);
+  canvas.addEventListener("pointerleave", onPointerUp);
+  canvas.addEventListener("pointermove", onPointerMove);
   window.addEventListener("resize", resize);
 
   const clock = new THREE.Clock();
@@ -291,9 +297,10 @@ function initGlobe(
 
   return () => {
     cancelAnimationFrame(frameId);
-    canvas.removeEventListener("mousedown", onMouseDown);
-    window.removeEventListener("mouseup", onMouseUp);
-    window.removeEventListener("mousemove", onMouseMove);
+    canvas.removeEventListener("pointerdown", onPointerDown);
+    canvas.removeEventListener("pointerup", onPointerUp);
+    canvas.removeEventListener("pointerleave", onPointerUp);
+    canvas.removeEventListener("pointermove", onPointerMove);
     window.removeEventListener("resize", resize);
     disposables.forEach((item) => item.dispose());
     renderer.dispose();
@@ -338,7 +345,7 @@ export default function GlobeCanvas({ offices, activeIndex, className = "" }: Gl
   return (
     <div
       ref={stageRef}
-      className={`relative h-[320px] w-full lg:h-[460px] ${className}`}
+      className={`relative h-[320px] w-full sm:h-[380px] lg:h-[460px] ${className}`}
     >
       <canvas
         ref={canvasRef}

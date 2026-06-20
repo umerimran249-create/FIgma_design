@@ -27,6 +27,7 @@ export default function FlairSlider() {
   }, []);
 
   const current = featured[i];
+  if (!current) return null;
 
   return (
     <section className="bg-[#1f2942] py-20 sm:py-24 lg:py-[120px]">
