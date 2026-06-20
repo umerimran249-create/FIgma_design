@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 type ScrollSection3DProps = {
@@ -23,6 +23,7 @@ export default function ScrollSection3D({
   ambient = true,
 }: ScrollSection3DProps) {
   const ref = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -38,6 +39,18 @@ export default function ScrollSection3D({
     : fillMin
       ? "section-flow--fill-min"
       : "";
+
+  if (reducedMotion) {
+    return (
+      <section ref={ref} id={id} className={`scroll-section-3d ${fillClass} ${className}`}>
+        <div
+          className={`scroll-section-3d__inner relative z-[1] ${fill || fillMin ? "scroll-section-3d__inner--fill" : ""}`}
+        >
+          {children}
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section

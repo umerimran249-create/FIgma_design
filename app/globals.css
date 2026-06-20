@@ -76,7 +76,6 @@ body {
 }
 
 .scroll-section-3d__inner {
-  will-change: transform, opacity;
   transform-origin: center center;
 }
 body {

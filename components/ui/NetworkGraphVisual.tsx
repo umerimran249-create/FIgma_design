@@ -11,7 +11,15 @@ import {
 import { inViewReplay } from "@/lib/motion";
 
 /** 3×3 node grid matching the Vista Logica network mark. */
-const NODES = [
+type GraphNode = {
+  id: string;
+  x: number;
+  y: number;
+  tier: number;
+  hub?: boolean;
+};
+
+const NODES: GraphNode[] = [
   { id: "n00", x: 22, y: 22, tier: 1 },
   { id: "n10", x: 50, y: 22, tier: 1 },
   { id: "n20", x: 78, y: 22, tier: 1 },
@@ -21,7 +29,7 @@ const NODES = [
   { id: "n02", x: 22, y: 78, tier: 3 },
   { id: "n12", x: 50, y: 78, tier: 3 },
   { id: "n22", x: 78, y: 78, tier: 3 },
-] as const;
+];
 
 const EDGES = [
   { id: "e1", from: "n00", to: "n01", delay: 0, dur: 2.4 },
@@ -34,7 +42,7 @@ const EDGES = [
   { id: "e8", from: "n02", to: "n12", delay: 0.85, dur: 3.2 },
 ] as const;
 
-const nodeMap = Object.fromEntries(NODES.map((n) => [n.id, n]));
+const nodeMap: Record<string, GraphNode> = Object.fromEntries(NODES.map((n) => [n.id, n]));
 
 type NetworkGraphVisualProps = {
   className?: string;

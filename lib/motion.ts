@@ -36,9 +36,9 @@ export const stagger = {
   },
 };
 
-/** Re-triggers enter/exit animations every time the element scrolls in or out of view. */
-export const viewport = { once: false, margin: "-80px" as const, amount: 0.12 };
+/** Play enter animations once when scrolling into view (avoids re-trigger jank). */
+export const viewport = { once: true, margin: "-80px" as const, amount: 0.12 };
 
-export const viewportTight = { once: false, margin: "-40px" as const, amount: 0.15 };
+export const viewportTight = { once: true, margin: "-40px" as const, amount: 0.15 };
 
-export const inViewReplay = { once: false, margin: "-60px" as const, amount: 0.12 };
+export const inViewReplay = { once: true, margin: "-60px" as const, amount: 0.12 };
